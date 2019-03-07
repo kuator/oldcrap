@@ -1,4 +1,5 @@
 inoremap kj <Esc>
+let mapleader=" "
 
 inoremap <M-s> <Esc>:wq <cr>
 cnoremap <M-s> :wq <cr>
@@ -14,7 +15,6 @@ vnoremap <M-d> :wq! <cr>
 map <leader>e :e! ~/.config/nvim/init.vim<cr>
 nnoremap <silent> ,<leader> :nohlsearch<cr>
 
-let mapleader=" "
 
 
 
@@ -29,3 +29,13 @@ noremap! ,a <esc>a
 "new line and insert shortcuts
 noremap! ,O <esc>O
 noremap! ,o <esc>o
+
+
+
+
+" My custom mappings
+noremap ; :
+noremap <A-j> ,
+noremap <A-k> ;
+
+nnoremap <leader><leader> :xa<cr>
