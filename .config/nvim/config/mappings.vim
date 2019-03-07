@@ -35,7 +35,7 @@ noremap! ,o <esc>o
 
 " My custom mappings
 noremap ; :
-noremap <A-j> ,
-noremap <A-k> ;
+noremap <A-l> ,
+noremap <A-;> ;
 
 nnoremap <leader><leader> :xa<cr>

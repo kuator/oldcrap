@@ -14,7 +14,7 @@ source $HOME/.config/nvim/config/general.vim
 source $HOME/.config/nvim/config/lines.vim
 source $HOME/.config/nvim/config/mappings.vim
 source $HOME/.config/nvim/config/plugins.vim
-source $HOME/.config/nvim/config/autoclosing.vim
+"source $HOME/.config/nvim/config/autoclosing.vim
 source $HOME/.config/nvim/config/gui.vim
 
 

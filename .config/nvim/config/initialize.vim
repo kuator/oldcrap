@@ -17,6 +17,9 @@ call dein#add('tpope/vim-surround')
 call dein#add('morhetz/gruvbox')
 call dein#add('skywind3000/vim-keysound')
 call dein#add('mattn/emmet-vim')
+call dein#add('wellle/targets.vim')
+call dein#add('cohama/lexima.vim')
+
 
 
 
