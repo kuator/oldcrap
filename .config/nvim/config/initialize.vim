@@ -19,8 +19,6 @@ call dein#add('skywind3000/vim-keysound')
 call dein#add('mattn/emmet-vim')
 
 
-colorscheme gruvbox
-set background=dark
 
 if dein#check_install()
   call dein#install()

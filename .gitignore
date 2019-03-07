@@ -1,5 +1,4 @@
-.config/nvim/repos
-.config/nvim/repos/*
 node_modules
 **/node_modules
 repos
+.cache
