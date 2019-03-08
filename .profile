@@ -46,3 +46,5 @@ setxkbmap -option ctrl:ralt_rctrl
 setxkbmap -option grp:ctrl_alt_toggle
 setxkbmap -layout us,ru
 xset r rate 220 40
+
+

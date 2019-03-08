@@ -1,4 +1,3 @@
-inoremap kj <Esc>
 let mapleader=" "
 
 inoremap <M-s> <Esc>:wq <cr>
@@ -32,10 +31,34 @@ noremap! ,o <esc>o
 
 
 
-
 " My custom mappings
-noremap ; :
-noremap <A-l> ,
-noremap <A-;> ;
+"noremap ; :
+"noremap ; :
+"noremap <A-l> ,
+"noremap <A-;> ;
 
+
+
+
+inoremap kj <Esc>
+cnoremap kj <Esc>
+cnoremap jj <cr>
+nnoremap ss :
 nnoremap <leader><leader> :xa<cr>
+nnoremap <leader>s :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>g GG
+nnoremap <leader>f /
+nnoremap <leader>p :bn<cr>
+nnoremap <leader>n :bp<cr>
+nnoremap <leader>d :bd<cr>
+nnoremap <leader>e :e $MYVIMRC<cr>
+nnoremap <leader>v :so $MYVIMRC<CR>
+"cnoremap <M-i> <tab>
+nnoremap <silent> ,<leader> :nohlsearch<cr>
+
+
+
+"https://superuser.com/questions/445123/vim-sending-tab-completion-key-against-a-mapped-keystroke
+set wildcharm=<tab>
+cnoremap <M-k> <Tab>

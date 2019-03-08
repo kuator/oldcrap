@@ -2,6 +2,8 @@ if &compatible
   set nocompatible
 endif
 
+set nocompatible
+
 
 colorscheme gruvbox
 set background=dark
