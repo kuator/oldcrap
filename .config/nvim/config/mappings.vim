@@ -72,3 +72,80 @@ inoremap ; :
 inoremap <a-;> ;
 
 nnoremap <leader>b :ls<CR>:b<Space>
+
+
+
+
+
+
+
+nnoremap <C-I> :call VimLock(1)<CR>i
+function! VimLock(enable)
+  if a:enable
+    inoremap a 1
+    inoremap s 2
+    inoremap d 3
+    inoremap f 4
+    inoremap g 5
+    inoremap h 6
+    inoremap j 7
+    inoremap k 8
+    inoremap l 9
+    inoremap ; 0
+    iunmap kj
+    inoremap ee <Esc>:call VimLock(0)<CR>i
+  else
+    iunmap a
+    iunmap s
+    iunmap d
+    iunmap f
+    iunmap g
+    iunmap h
+    iunmap j
+    iunmap k
+    iunmap l
+    iunmap ;
+    iunmap ee
+    inoremap kj <Esc>
+  endif
+endfunction
+
+
+
+
+"Working on this (
+"cnoremap <silent> <a-i> <esc>:call VimLock(1)<cr>:
+""cnoremap <expr> <a-i> VimLock(1)<cr>
+"function! VimLock(enable)
+"  if a:enable
+"    cnoremap a 1
+"    cnoremap s 2
+"    cnoremap d 3
+"    cnoremap f 4
+"    cnoremap g 5
+"    cnoremap h 6
+"    cnoremap j 7
+"    cnoremap k 8
+"    cnoremap l 9
+"    cnoremap ; 0
+"    cunmap kj
+"    cunmap jj
+"    cunmap df
+"    cnoremap <silent> ee <esc>:call VimLock(0)<cr>
+"  else
+"    cunmap a
+"    cunmap s
+"    cunmap d
+"    cunmap f
+"    cunmap g
+"    cunmap h
+"    cunmap j
+"    cunmap k
+"    cunmap l
+"    cunmap ;
+"    cunmap ee
+"    cnoremap kj <Esc>
+"  endif
+"endfunction
+
+
