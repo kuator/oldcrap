@@ -61,4 +61,14 @@ nnoremap <silent> ,<leader> :nohlsearch<cr>
 
 "https://superuser.com/questions/445123/vim-sending-tab-completion-key-against-a-mapped-keystroke
 set wildcharm=<tab>
-cnoremap <M-k> <Tab>
+cnoremap df <tab>
+"cnoremap ff <tab><s-tab><s-tab>
+
+
+
+nnoremap vv V
+
+inoremap ; :
+inoremap <a-;> ;
+
+nnoremap <leader>b :ls<CR>:b<Space>

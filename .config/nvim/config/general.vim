@@ -12,3 +12,4 @@ set clipboard=unnamedplus
 filetype plugin indent on
 syntax enable
 set expandtab
+set wildmenu
