@@ -1,9 +1,17 @@
+" Setting leader
 let mapleader=" "
+
+" Quit
+nmap <Leader>q :q<CR>
+" Write 
+imap kw <Esc>:w<CR>a
+
 
 inoremap <M-s> <Esc>:wq <cr>
 cnoremap <M-s> :wq <cr>
 nnoremap <M-s> :wq <cr>
 vnoremap <M-s> :wq <cr>
+
 
 
 inoremap <M-d> <Esc> :wq! <cr>
@@ -41,7 +49,7 @@ noremap! ,o <esc>o
 
 
 inoremap kj <Esc>
-cnoremap kj <Esc>
+cnoremap kj <Esc><cr>
 cnoremap jj <cr>
 nnoremap ss :
 nnoremap <leader><leader> :xa<cr>
@@ -54,14 +62,49 @@ nnoremap <leader>n :bp<cr>
 nnoremap <leader>d :bd<cr>
 nnoremap <leader>e :e $MYVIMRC<cr>
 nnoremap <leader>v :so $MYVIMRC<CR>
+nnoremap <leader>u H
 "cnoremap <M-i> <tab>
 nnoremap <silent> ,<leader> :nohlsearch<cr>
+
+noremap p gp
+noremap P gP
+
+
+" Move to the previous buffer with "gp"
+nnoremap sp :bp<CR><esc>
+
+" Move to the next buffer with "gn"
+nnoremap sn :bn<CR><esc>
+
+" List all possible buffers with "gl"
+nnoremap sl :ls<CR><esc>
+
+" List all possible buffers with "gb" and accept a new buffer argument [1]
+nnoremap gb :ls<CR>:b<space>
+
+" Go to ex mode and edit
+nnoremap se :e<space>
+
+
+" Go to end of file
+nnoremap sj GG
+
+
+" Go to end of file
+nnoremap sj GG
+
+
+" Go to end of file
+nnoremap sk <c-u>
+
 
 
 
 "https://superuser.com/questions/445123/vim-sending-tab-completion-key-against-a-mapped-keystroke
 set wildcharm=<tab>
 cnoremap df <tab>
+cnoremap <a-k> <tab>
+cnoremap <a-j> <tab><s-tab><s-tab>
 "cnoremap ff <tab><s-tab><s-tab>
 
 
@@ -77,11 +120,11 @@ nnoremap <leader>b :ls<CR>:b<Space>
 
 
 
-
-
-nnoremap <C-I> :call VimLock(1)<CR>i
 function! VimLock(enable)
   if a:enable
+    iunmap kj
+    iunmap df
+    iunmap kw
     inoremap a 1
     inoremap s 2
     inoremap d 3
@@ -92,8 +135,7 @@ function! VimLock(enable)
     inoremap k 8
     inoremap l 9
     inoremap ; 0
-    iunmap kj
-    inoremap ee <Esc>:call VimLock(0)<CR>i
+    inoremap ee <Esc>:call VimLock(0)<CR>a
   else
     iunmap a
     iunmap s
@@ -106,9 +148,22 @@ function! VimLock(enable)
     iunmap l
     iunmap ;
     iunmap ee
+    imap kw <Esc>:w<CR>
     inoremap kj <Esc>
+    " inoremap df <esc>:call VimLock(1)<CR>a
+    inoremap kw <esc>:call VimLock(1)<CR>a
   endif
 endfunction
+nnoremap <C-I> :call VimLock(1)<CR>a
+inoremap df <esc>:call VimLock(1)<CR>a
+inoremap kw <esc>:call VimLock(1)<CR>a
+
+
+
+
+nnoremap cp yap<S-}>p
+nnoremap <leader>a =ip
+inoremap ,s <C-c>:w<cr>a
 
 
 
@@ -149,3 +204,7 @@ endfunction
 "endfunction
 
 
+
+nmap <leader>g :GFiles<CR>
+nmap <leader>f :Files<CR>
+map <m-j> :Files<CR>

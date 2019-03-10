@@ -22,3 +22,7 @@ source $HOME/.config/nvim/config/gui.vim
 ""for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
 ""  exe 'source' f
 ""endfor
+
+
+
+"let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'

@@ -121,6 +121,7 @@ alias pipsh="pipenv shell"
 alias links="nvim ~/links/links.txt"
 alias sentdex="djangogo; cd sentdex"
 alias n.="nvim s"
+alias vi="nvim"
 alias maketern="cp ~/.tern-project ."
 alias sim="cd /home/evakuator/Documents/kbtu/simulation/"
 alias config="cd /home/evakuator/.config/"
@@ -218,4 +219,4 @@ zle -N clear-screen
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
+export FZF_DEFAULT_COMMAND='find .'

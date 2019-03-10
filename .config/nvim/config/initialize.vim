@@ -14,11 +14,15 @@ call dein#add('wsdjeg/dein-ui.vim')
 
 call dein#add('whatyouhide/vim-gotham')
 call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-commentary')
 call dein#add('morhetz/gruvbox')
 call dein#add('skywind3000/vim-keysound')
 call dein#add('mattn/emmet-vim')
 call dein#add('wellle/targets.vim')
-call dein#add('cohama/lexima.vim')
+call dein#add('junegunn/goyo.vim')
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+"call dein#add('cohama/lexima.vim')
 
 
 
