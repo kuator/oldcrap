@@ -219,4 +219,5 @@ zle -N clear-screen
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='find .'
+# https://github.com/junegunn/fzf/issues/337#issuecomment-136383876
+ export FZF_DEFAULT_COMMAND='find ~ /mnt/myhdd/'

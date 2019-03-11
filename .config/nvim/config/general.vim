@@ -23,9 +23,19 @@ set background=dark
 set clipboard=unnamedplus
 
 filetype plugin indent on
-syntax enable
+syntax on
 set expandtab
 set wildmenu
+set nowrap
+
+" Disabling arrow keys
+noremap <Left> :echoe "Use h"<CR>
+noremap <Right> :echoe "Use l"<CR>
+noremap <Up> :echoe "Use k"<CR>
+noremap <Down> :echoe "Use j"<CR>
+
+
+
 
 
 

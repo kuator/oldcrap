@@ -52,6 +52,7 @@ inoremap kj <Esc>
 cnoremap kj <Esc><cr>
 cnoremap jj <cr>
 nnoremap ss :
+vnoremap ss :
 nnoremap <leader><leader> :xa<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>q :q<cr>
@@ -91,11 +92,12 @@ nnoremap sj GG
 
 
 " Go to end of file
-nnoremap sj GG
+" nnoremap sj GG
 
 
 " Go to end of file
 nnoremap sk <c-u>
+
 
 
 
@@ -205,6 +207,8 @@ inoremap ,s <C-c>:w<cr>a
 
 
 
-nmap <leader>g :GFiles<CR>
+nmap <leader>g G
+nmap sj :GFiles<CR>
 nmap <leader>f :Files<CR>
 map <m-j> :Files<CR>
+
