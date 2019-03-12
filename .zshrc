@@ -97,8 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zic="vim ~/.zshrc"
-alias vic="vim ~/.vimrc"
+alias zic="nvim ~/.zshrc"
+alias vic="nvim ~/.vimrc"
 alias nic="nvim ~/.config/nvim/init.vim"
 alias pric="nvim ~/.profile"
 alias gotop="cd ~/Documents/Programming"
@@ -220,4 +220,5 @@ zle -N clear-screen
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # https://github.com/junegunn/fzf/issues/337#issuecomment-136383876
- export FZF_DEFAULT_COMMAND='find ~ /mnt/myhdd/'
+# export FZF_DEFAULT_COMMAND='find ~ /mnt/myhdd/'
+export FZF_DEFAULT_COMMAND='rg ~ /mnt/myhdd/ --files'
