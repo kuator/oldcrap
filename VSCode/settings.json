@@ -1,0 +1,52 @@
+{
+
+    "python.pythonPath": " /home/evakuator/.local/share/virtualenvs/full_stack-M3HX23z6/bin/python",
+    "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "material-icon-theme",
+    "keyboard.dispatch": "keyCode",
+    "vim.useCtrlKeys": true,
+
+  "eslint.options": { "configFile": "/home/evakuator/.eslintrc.json" },
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "ctrl+h" ],
+            "commands": [ "workbench.action.navigateLeft" ]
+        },
+        {
+            "before": [ "ctrl+l" ],
+            "commands": [ "workbench.action.navigateRight" ]
+        },
+        {
+            "before": [ "ctrl+k" ],
+            "commands": [ "workbench.action.navigateUp" ]
+        },
+        {
+            "before": [ "ctrl+j" ],
+            "commands": [ "workbench.action.navigateDown" ]
+        },
+{
+            "before": ["ctrl", "w"],
+            "commands": [
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        }
+
+    ],
+"editor.lineHighlightBackground": "#1E1E1EAA",
+"python.pythonPath": "/usr/bin/python3"
+
+}
