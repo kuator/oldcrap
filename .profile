@@ -29,22 +29,26 @@ fi
 
 
 
-#XKB_DIR="$HOME/.config/xkb"
+XKB_DIR="$HOME/.config/xkb"
 #XKB_SYMBOL_FILE="my-symbols"
 #XKB_KEYCODE_FILE="my-keycodes"
 #
+
 #setxkbmap -layout "us+$XKB_SYMBOL_FILE(xcape-special)" \
 #    -keycodes "evdev+$XKB_KEYCODE_FILE(xcape-special)" \
 #    -option "" -print \
 #    | xkbcomp -I"$XKB_DIR" - "${DISPLAY%%.*}" >/dev/null 2>&1
 
+
+
 #xcape -e "Hyper_R=space"
 #xcape -e "ISO_Level3_Shift=space"
 
-setxkbmap -option caps:swapescape
-setxkbmap -option ctrl:ralt_rctrl
-setxkbmap -option grp:ctrl_alt_toggle
-setxkbmap -layout us,ru
+
+
+xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
+# setxkbmap -option caps:swapescape
+# setxkbmap -option ctrl:ralt_rctrl
+# setxkbmap -option grp:ctrl_alt_toggle
+# setxkbmap -layout us,ru
 xset r rate 220 40
-
-

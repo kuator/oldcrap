@@ -23,18 +23,31 @@ call dein#add('wellle/targets.vim')
 call dein#add('junegunn/goyo.vim')
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-call dein#add('airblade/vim-rooter')
+" call dein#add('airblade/vim-rooter')
 call dein#add('dracula/vim')
 call dein#add('othree/yajs.vim')
 call dein#add('pangloss/vim-javascript')
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/denite.nvim')
 call dein#add('w0rp/ale')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('HerringtonDarkholme/yats.vim')
 call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('https://github.com/jiangmiao/auto-pairs')
+" call dein#add('https://github.com/easymotion/vim-easymotion')
+" call dein#add('https://github.com/justinmk/vim-sneak')
+" call dein#add('https://github.com/jiangmiao/auto-pairs')
+
+
+
+
+
+
+call dein#add('https://github.com/kana/vim-textobj-user')
+call dein#add('https://github.com/kana/vim-textobj-line')
+
+
 
 
 if !has('nvim')

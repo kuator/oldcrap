@@ -25,6 +25,7 @@ filetype plugin indent on
 syntax on
 set expandtab
 set wildmenu
+set wildmode=full
 set nowrap
 
 " Disabling arrow keys
@@ -49,12 +50,12 @@ endif
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
+set omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType typescript setlocal omnifunc=typescript#CompleteTS
 
 
 " In the case you want the completion work all the time
@@ -79,5 +80,6 @@ let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 setlocal autoindent
 setlocal cindent
 setlocal smartindent
-set expandtab 
+set expandtab
 set shiftwidth=2
+set ignorecase

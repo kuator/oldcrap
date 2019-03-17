@@ -3,7 +3,7 @@ let mapleader=" "
 
 " Quit
 nmap <Leader>q :q<CR>
-" Write 
+" Write
 imap kw <Esc>:w<CR>a
 
 
@@ -111,9 +111,9 @@ cnoremap <a-j> <tab><s-tab><s-tab>
 
 
 
-nnoremap vv V
+nnoremap vv v$
 
-inoremap ; :
+" inoremap ; :
 inoremap <a-;> ;
 
 nnoremap <leader>b :ls<CR>:b<Space>
@@ -211,4 +211,28 @@ nmap <leader>g G
 nmap sj :GFiles<CR>
 nmap <leader>f :Files<CR>
 map <m-j> :Files<CR>
+tnoremap jj <C-\><C-n>
 
+
+
+nnoremap <m-j> <c-w><c-j>
+nnoremap <m-k> <c-w><c-k>
+nnoremap <m-l> <c-w><c-l>
+nnoremap <m-h> <c-w><c-h>
+
+
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
+
+
+
+
+
+
+
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T

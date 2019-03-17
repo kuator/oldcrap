@@ -104,7 +104,7 @@ alias pric="nvim ~/.profile"
 alias gotop="cd ~/Documents/Programming"
 alias djangogo="cd ~/Documents/django"
 alias jsgo="cd ~/Documents/javascript"
-alias v="vim"
+alias v="nvim"
 alias n="nvim"
 alias djrs="python manage.py runserver"
 alias djsd='python manage.py syncdb'
@@ -129,6 +129,7 @@ alias doc="cd /home/evakuator/Documents/"
 alias dow="cd /home/evakuator/Downloads/"
 alias k="cd /home/evakuator/Documents/kbtu/"
 alias lar="cd /home/evakuator/Documents/kbtu/angular/"
+alias git-root='cd $(git rev-parse --show-cdup)'
 #alias sim="nvim -u NONE -N"
 
 
@@ -221,4 +222,7 @@ zle -N clear-screen
 
 # https://github.com/junegunn/fzf/issues/337#issuecomment-136383876
 # export FZF_DEFAULT_COMMAND='find ~ /mnt/myhdd/'
-export FZF_DEFAULT_COMMAND='rg ~ /mnt/myhdd/ --files'
+# export FZF_DEFAULT_COMMAND='rg ~ /mnt/myhdd/ --files'
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
