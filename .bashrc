@@ -136,4 +136,5 @@ fi
 
 . /home/evakuator/anaconda3/etc/profile.d/conda.sh
 
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

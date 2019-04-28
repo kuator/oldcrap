@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+## Export npm
 export PATH=$HOME/.npm-global/bin:$PATH
 
+## java shit :\
 JAVA_PATH=/usr/lib/jvm/java-11-openjdk-amd64
 
 # Path to your oh-my-zsh installation.
@@ -14,6 +15,7 @@ export ZSH="/home/evakuator/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="refined"
 #ZSH_THEME="bullet-train"
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,7 +69,8 @@ export UPDATE_ZSH_DAYS=3
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip-env z)
+plugins=(git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip-env z pyenv)
+# plugins=(git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip-env z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,12 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias cb="xclip -selection clipboard"
+alias sl="ls"
 alias zic="nvim ~/.zshrc"
 alias vic="nvim ~/.vimrc"
 alias nic="nvim ~/.config/nvim/init.vim"
 alias pric="nvim ~/.profile"
 alias gotop="cd ~/Documents/Programming"
-alias djangogo="cd ~/Documents/django"
+alias djangogo="cd ~/Documents/kbtu/django"
 alias jsgo="cd ~/Documents/javascript"
 alias v="nvim"
 alias n="nvim"
@@ -124,7 +129,7 @@ alias n.="nvim s"
 alias vi="nvim"
 alias maketern="cp ~/.tern-project ."
 alias sim="cd /home/evakuator/Documents/kbtu/simulation/"
-alias config="cd /home/evakuator/.config/"
+alias con="cd /home/evakuator/.config/"
 alias doc="cd /home/evakuator/Documents/"
 alias dow="cd /home/evakuator/Downloads/"
 alias k="cd /home/evakuator/Documents/kbtu/"
@@ -156,13 +161,19 @@ alias git-root='cd $(git rev-parse --show-cdup)'
 # <<< conda init <<<
 
 
+. /home/evakuator/anaconda3/etc/profile.d/conda.sh
+
+
 
 
 # export PROMPT='[${ret_status}%{$fg[magenta]%}%n@%{$fg[red]%}%m]-[%{$fg[cyan]%}%c%{$reset_color%}]%{$fg_bold[blue]%}-[%T]%{$reset_color%}$ '
 # PS1='%m %1d$ '
 
 
+
+# Set zsh mode to vi over emacs
 bindkey -v
+
 # ci"
 autoload -U select-quoted
 zle -N select-quoted
@@ -181,6 +192,9 @@ for m in visual viopp; do
   done
 done
 
+
+
+# # <<< vi init <<<
 # surround
 autoload -Uz surround
 zle -N delete-surround surround
@@ -203,26 +217,143 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-cowsay $(fortune)
-#cowsay "Glory to Mankind"
-#cowsay "Nurai is bitch"
-#cat /home/evakuator/another.text
-
-. /home/evakuator/anaconda3/etc/profile.d/conda.sh
-
-
 clear-screen() { echoti clear; precmd; zle redisplay; }
 zle -N clear-screen
+# # <<< vi init <<<
+
+
+
+
+
+
+
+
+cowsay $(fortune)
+
+
+
 
 
 
 #shopt -s extglob
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # https://github.com/junegunn/fzf/issues/337#issuecomment-136383876
-# export FZF_DEFAULT_COMMAND='find ~ /mnt/myhdd/'
+# export FZF_DEFAULT_COMMAND="fd . '/mnt/myhdd/' ."
 # export FZF_DEFAULT_COMMAND='rg ~ /mnt/myhdd/ --files'
+
+
+# export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+
+# cdf - cd into the directory of the selected file
+cdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+
+if [ $(command -v rlwrap) ] ; then
+  alias node='NODE_NO_READLINE=1 rlwrap node'
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+
+
+
+
+
+# function auto_pipenv_shell {
+#     if [ ! -n "${PIPENV_ACTIVE+1}" ]; then
+#         if [ -f "Pipfile" ] ; then
+#             pipenv shell
+#         fi
+#     fi
+# }
+
+# function cd {
+#     builtin cd "$@"
+#     auto_pipenv_shell
+# }
+
+# auto_pipenv_shell
+
+
+# function mkdir
+# {
+#   command mkdir $1 && cd $1
+# }
+
+mkcd() {
+  mkdir -p $1 && cd $1
+}
+
+
+# zsh-bd
+. $HOME/.zsh/plugins/bd/bd.zsh
+
+
+# zsh-virtualenv-autodetect
+. $HOME/.zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
+
+
+
+
+
+
+
+function x11-clip-wrap-widgets() {
+    # NB: Assume we are the first wrapper and that we only wrap native widgets
+    # See zsh-autosuggestions.zsh for a more generic and more robust wrapper
+    local copy_or_paste=$1
+    shift
+
+    for widget in $@; do
+        # Ugh, zsh doesn't have closures
+        if [[ $copy_or_paste == "copy" ]]; then
+            eval "
+            function _x11-clip-wrapped-$widget() {
+                zle .$widget
+                xclip -in -selection clipboard <<<\$CUTBUFFER
+            }
+            "
+        else
+            eval "
+            function _x11-clip-wrapped-$widget() {
+                CUTBUFFER=\$(xclip -out -selection clipboard)
+                zle .$widget
+            }
+            "
+        fi
+
+        zle -N $widget _x11-clip-wrapped-$widget
+    done
+}
+
+
+local copy_widgets=(
+    vi-yank vi-yank-eol vi-delete vi-backward-kill-word vi-change-whole-line
+)
+local paste_widgets=(
+    vi-put-{before,after}
+)
+
+# NB: can atm. only wrap native widgets
+x11-clip-wrap-widgets copy $copy_widgets
+x11-clip-wrap-widgets paste  $paste_widgets

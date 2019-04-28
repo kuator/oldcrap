@@ -12,7 +12,7 @@ let b:ale_linters = {
 let b:ale_fixers = ['prettier']
 
 let b:ale_fixers = {
-\    'typescript': ['prettier'],
+\    'typescript': ['prettier', 'eslint'],
 \}
 
 let b:ale_linters_ignore = {'typescript': ['tslint']}

@@ -1,8 +1,7 @@
 {
 
-    "python.pythonPath": " /home/evakuator/.local/share/virtualenvs/full_stack-M3HX23z6/bin/python",
     "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "ƒ - Gruvbox",
     "workbench.iconTheme": "material-icon-theme",
     "keyboard.dispatch": "keyCode",
     "vim.useCtrlKeys": true,
@@ -47,6 +46,4 @@
 
     ],
 "editor.lineHighlightBackground": "#1E1E1EAA",
-"python.pythonPath": "/usr/bin/python3"
-
 }

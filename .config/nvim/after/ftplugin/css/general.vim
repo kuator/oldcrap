@@ -1,12 +1,11 @@
 let b:ale_linters = {
-\   'html': ['alex', 'htmlhint', 'writegood'],
+\   'css': ['csslint']
 \}
 
 let b:ale_fixers = {
-\    'html': ['prettier'],
+\    'css': ['prettier']
 \}
 
 " let b:ale_linters = {
 " \   'javascript': ['tsserver'],
 " \}
-

@@ -29,7 +29,7 @@ fi
 
 
 
-XKB_DIR="$HOME/.config/xkb"
+#XKB_DIR="$HOME/.config/xkb"
 #XKB_SYMBOL_FILE="my-symbols"
 #XKB_KEYCODE_FILE="my-keycodes"
 #
@@ -41,12 +41,27 @@ XKB_DIR="$HOME/.config/xkb"
 
 
 
-#xcape -e "Hyper_R=space"
+# xcape -e "Hyper_R=space"
 #xcape -e "ISO_Level3_Shift=space"
 
 
 
+
+#////////Temp comment
 xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
+
+
+xcape -t 1000 -e "Hyper_R=space"
+#/////////Temp comment
+
+
+
+
+
+
+
+
+#//////////////Old stuff
 # setxkbmap -option caps:swapescape
 # setxkbmap -option ctrl:ralt_rctrl
 # setxkbmap -option grp:ctrl_alt_toggle
