@@ -312,7 +312,8 @@ mkcd() {
 # zsh-virtualenv-autodetect
 . $HOME/.zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
 
-
+# autojump
+. /usr/share/autojump/autojump.sh
 
 
 
@@ -357,3 +358,12 @@ local paste_widgets=(
 # NB: can atm. only wrap native widgets
 x11-clip-wrap-widgets copy $copy_widgets
 x11-clip-wrap-widgets paste  $paste_widgets
+export TERM=xterm-256color
+
+
+
+export AUTOSWITCH_VIRTUAL_ENV_DIR="$HOME/Documents/.virtualenvs"
+export PIPENV_VENV_IN_PROJECT=true
+
+
+setopt extended_glob

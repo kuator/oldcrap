@@ -48,15 +48,18 @@ fi
 
 
 #////////Temp comment
+
+
+
 xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
 
 
-xcape -t 1000 -e "Hyper_R=space"
 #/////////Temp comment
 
 
 
 
+#setxkbmap -layout "us+custom(default),ru(winkeys)" -option "" -option "grp:toggle,compose:rctrl" -compat "complete+custom(latch)" -print | xkbcomp -I"$HOME/.config/xkb" - "${DISPLAY%%.*}"
 
 
 
@@ -66,4 +69,9 @@ xcape -t 1000 -e "Hyper_R=space"
 # setxkbmap -option ctrl:ralt_rctrl
 # setxkbmap -option grp:ctrl_alt_toggle
 # setxkbmap -layout us,ru
+
+# xkbset ignorelock -control sticky -twokey -latchlock
+
+xcape -t 1000 -e "Hyper_R=space"
+
 xset r rate 220 40

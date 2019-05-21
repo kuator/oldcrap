@@ -1,3 +1,4 @@
+filetype plugin indent on
 set termguicolors
 " colorscheme tender
 " colorscheme PaperColor
@@ -9,5 +10,7 @@ set background=dark
 " highlight NonText ctermbg=none
 " highlight Normal guibg=none
 " highlight NonText guibg=none
-hi Normal ctermbg=none guibg=none
 let g:airline_theme = 'gruvbox'
+set formatoptions-=cro
+highlight Normal ctermbg=none guibg=none
+highlight LineNr guifg=white

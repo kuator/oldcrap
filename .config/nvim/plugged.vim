@@ -69,7 +69,8 @@ call dein#add('https://github.com/AndrewRadev/dsf.vim')
 
 " Utils {{{
 call dein#add('Shougo/defx.nvim')
-call dein#add('https://github.com/zhou13/vim-easyescape')
+call dein#add('https://github.com/AndrewRadev/tagalong.vim')
+" call dein#add('https://github.com/zhou13/vim-easyescape')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-surround')
@@ -77,6 +78,8 @@ call dein#add('mhinz/vim-startify')
 call dein#add('https://github.com/yuttie/comfortable-motion.vim')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('https://github.com/numirias/semshi')
+call dein#add('https://github.com/tpope/vim-rsi')
 " call dein#add('vim-airline/vim-airline')
 " call dein#add('vim-airline/vim-airline-themes')
 
@@ -88,7 +91,7 @@ call dein#add('dracula/vim')
 call dein#add('othree/yajs.vim', {'lazy': 1, 'on_ft':'javascript'})
 call dein#add('pangloss/vim-javascript', {'lazy': 1, 'on_ft':'javascript'})
 call dein#add('w0rp/ale')
-" call dein#add('sheerun/vim-polyglot')
+call dein#add('sheerun/vim-polyglot')
 call dein#add('https://github.com/pangloss/vim-javascript')
 call dein#add('HerringtonDarkholme/yats.vim')
 "call dein#add('machakann/vim-highlightedyank')
@@ -96,9 +99,9 @@ call dein#add('HerringtonDarkholme/yats.vim')
 
 
 
-
-
-
+"Git
+call dein#add('tpope/vim-fugitive')
+"
 
 
 call dein#add('morhetz/gruvbox')                                                  " Gruvbox

@@ -1,5 +1,5 @@
 let b:ale_linters = {
-\   'html': ['alex', 'htmlhint', 'writegood'],
+\   'html': ['alex', 'writegood'],
 \}
 
 let b:ale_fixers = {
@@ -9,4 +9,3 @@ let b:ale_fixers = {
 " let b:ale_linters = {
 " \   'javascript': ['tsserver'],
 " \}
-

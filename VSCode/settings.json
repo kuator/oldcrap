@@ -6,6 +6,7 @@
     "keyboard.dispatch": "keyCode",
     "vim.useCtrlKeys": true,
 
+"vim.easymotionMarkerFontFamily":"monospace",
   "eslint.options": { "configFile": "/home/evakuator/.eslintrc.json" },
     "vim.useSystemClipboard": true,
     "vim.insertModeKeyBindings": [
@@ -19,6 +20,7 @@
             ]
         }
     ],
+    "vim.easymotion": true,
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -46,4 +48,5 @@
 
     ],
 "editor.lineHighlightBackground": "#1E1E1EAA",
+"window.zoomLevel": 0,
 }

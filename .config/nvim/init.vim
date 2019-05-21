@@ -15,8 +15,6 @@ runtime config/global.vim
 runtime config/theme.vim
 
 
-filetype plugin indent on
-
 
 
 " let g:ale_fixers = {

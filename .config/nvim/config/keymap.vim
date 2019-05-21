@@ -1,4 +1,4 @@
-" inoremap kj <esc>
+inoremap kj <esc>
 inoremap <expr> <c-d> ((pumvisible())?("\<C-n>"):("<c-d>"))
 inoremap <expr> <c-e> ((pumvisible())?("\<C-p>"):("<c-e>"))
 nnoremap ss :
@@ -25,19 +25,29 @@ let mapleader = ' '
 " let mapleader = '\<space>'
 
 
-nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+" nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+" nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " nmap <cr> o<Esc>
 
 
 
 nnoremap <leader>g G
 nnoremap <leader><leader> :wq
-nnoremap <leader>s :w<cr>
+nnoremap <silent><leader>s :source $MYVIMRC<cr>
 tnoremap <esc> <c-\><c-n>
 
 inoremap <c-s> <c-y>
 
 vnoremap y ygv<Esc>
-nnoremap <C-L> :nohlsearch<CR><C-L>
+nnoremap <c-l> :nohlsearch<cr><>
 " vnoremap p "_dP
+nnoremap - $
+
+
+" nnoremap ; :
+" inoremap ; :
+" vnoremap ; :
+
+" nnoremap : ;
+" inoremap : ;
+" vnoremap : ;

@@ -21,9 +21,12 @@ endif
 call plug#begin(expand('~/.vim/plugged'))
 
 " (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf'
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'sts10/vim-pink-moon' 
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -37,17 +40,24 @@ nnoremap 0 ^
 " Tabulation and spaces
 set expandtab                                                               " Show spaces instead of tabs
 set shiftwidth=0                                                            " columns per <<
-set softtabstop=4                                                           " spaces per tab
-set tabstop=4                                                               " columns per tabs
+set softtabstop=2                                                           " spaces per tab
+set tabstop=2                                                               " columns per tabs
 
 set number
 set relativenumber
 
-nnoremap ss :
-
-
+" nnoremap ss :
 
 "https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+
+"https://vim.fandom.com/wiki/256_colors_in_vim
+set t_Co=256
+
+" nmap <silent> gd <Plug>(coc-definition)
+
+
+set background=dark
+hi Normal guibg=NONE ctermbg=NONE
