@@ -22,6 +22,7 @@ call dein#add('mattn/emmet-vim')
 call dein#add('neoclide/coc.nvim', {'merge':0, 'build': './install.sh nightly'})
 " call dein#add('https://github.com/xuhdev/vim-latex-live-preview', {'lazy':1, 'on_ft':'tex'})
 call dein#add('https://github.com/lervag/vimtex', {'lazy':1, 'on_ft':'tex'})
+call dein#add('OmniSharp/omnisharp-vim')
 "}}}
 
 
@@ -42,11 +43,14 @@ call dein#add('https://github.com/lervag/vimtex', {'lazy':1, 'on_ft':'tex'})
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('honza/vim-snippets')
+
+
+
 " call dein#add('mhartington/nvim-typescript', {'build': './install.sh', 'lazy': 1, 'on_source': ['deoplete.nvim']})
 "}}}
 
 "{{{ Denite
-call dein#add('Shougo/denite.nvim')
+call dein#add('Shougo/denite.nvim', {'rev':'0c74f5e0c96216370a1fcc48d63c07c3a253f685'})
 "}}}
 
 
@@ -68,8 +72,11 @@ call dein#add('https://github.com/AndrewRadev/dsf.vim')
 
 
 " Utils {{{
+
+call dein#add('https://github.com/chrisbra/matchit')
 call dein#add('Shougo/defx.nvim')
 call dein#add('https://github.com/AndrewRadev/tagalong.vim')
+call dein#add('https://github.com/AndrewRadev/sideways.vim')
 " call dein#add('https://github.com/zhou13/vim-easyescape')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-repeat')
@@ -80,6 +87,7 @@ call dein#add('ryanoasis/vim-devicons')
 call dein#add('christoomey/vim-tmux-navigator')
 call dein#add('https://github.com/numirias/semshi')
 call dein#add('https://github.com/tpope/vim-rsi')
+call dein#add('https://github.com/AndrewRadev/switch.vim')
 " call dein#add('vim-airline/vim-airline')
 " call dein#add('vim-airline/vim-airline-themes')
 

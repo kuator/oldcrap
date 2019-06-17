@@ -2,7 +2,8 @@ inoremap kj <esc>
 inoremap <expr> <c-d> ((pumvisible())?("\<C-n>"):("<c-d>"))
 inoremap <expr> <c-e> ((pumvisible())?("\<C-p>"):("<c-e>"))
 nnoremap ss :
-nnoremap 0 ^
+" nnoremap 0 ^
+" nnoremap ^ 0
 
 " Overwrite the current line with yanked text.
 nnoremap <silent> go  pk"_dd
@@ -32,7 +33,7 @@ let mapleader = ' '
 
 
 nnoremap <leader>g G
-nnoremap <leader><leader> :wq
+" nnoremap <leader><leader> :wq
 nnoremap <silent><leader>s :source $MYVIMRC<cr>
 tnoremap <esc> <c-\><c-n>
 
@@ -51,3 +52,8 @@ nnoremap - $
 " nnoremap : ;
 " inoremap : ;
 " vnoremap : ;
+
+" nnoremap : ;
+" nnoremap ; :
+
+" nnoremap q :wq<cr>

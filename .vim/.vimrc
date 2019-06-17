@@ -16,37 +16,31 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
-
-
 call plug#begin(expand('~/.vim/plugged'))
 
 " (Optional) Multi-entry selection UI.
 " Plug 'junegunn/fzf'
-
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'sts10/vim-pink-moon' 
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tpope/vim-surround'
+Plug 'honza/vim-snippets'
+Plug 'rstacruz/vim-closer'
+Plug 'iandingx/leetcode.vim'
+Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
-
 
 set clipboard=unnamedplus
 inoremap kj <esc>
 vnoremap kj <esc>
-nnoremap 0 ^
-
-
+" nnoremap 0 ^
 " Tabulation and spaces
 set expandtab                                                               " Show spaces instead of tabs
 set shiftwidth=0                                                            " columns per <<
 set softtabstop=2                                                           " spaces per tab
 set tabstop=2                                                               " columns per tabs
-
 set number
 set relativenumber
-
-" nnoremap ss :
+set incsearch
 
 "https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 let &t_SI = "\<Esc>[6 q"
@@ -58,6 +52,8 @@ set t_Co=256
 
 " nmap <silent> gd <Plug>(coc-definition)
 
-
 set background=dark
 hi Normal guibg=NONE ctermbg=NONE
+
+" Use the stdio version of OmniSharp-roslyn:
+let g:OmniSharp_server_stdio = 1

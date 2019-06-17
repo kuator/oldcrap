@@ -13,7 +13,7 @@ let g:user_emmet_leader_key=','
 
 let g:jsx_ext_required = 1
 
-let g:coc_global_extensions =['coc-html','coc-css', 'coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python']
+let g:coc_global_extensions =['coc-html','coc-css', 'coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-json','coc-python']
 
 
 
@@ -23,7 +23,7 @@ let g:coc_global_extensions =['coc-html','coc-css', 'coc-prettier','coc-eslint',
 "   --S:        Search case insensitively if the pattern is all lowercase
 call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
 
-call denite#custom#option('_', 'root_markers', '.venv, venv/, .git, build.sbt, Pipfile, package.json,init.vim')
+call denite#custom#option('_', 'root_markers', '.venv, venv/, .git, build.sbt, Pipfile, package.json,init.vim, .+.sln' )
 
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 " Use ripgrep in place of "grep"
@@ -90,7 +90,6 @@ call denite#custom#option('default' ,  {
 inoremap <silent><expr> <m-space> coc#refresh()
 
 
-map <leader>w <Plug>(easymotion-bd-w)
 
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -230,13 +229,138 @@ endfunction
 
 
 
+" let g:tmux_navigator_no_mappings = 1
+" nnoremap <silent> <m-h> : TmuxNavigateLeft<cr>
+" nnoremap <silent> <m-j> : TmuxNavigateDown<cr>
+" nnoremap <silent> <m-k> : TmuxNavigateUp<cr>
+" nnoremap <silent> <m-l> : TmuxNavigateRight<cr>
+" nnoremap <silent> <c-\>: TmuxNavigatePrevious<cr>
 let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <m-h> : TmuxNavigateLeft<cr>
-nnoremap <silent> <m-j> : TmuxNavigateDown<cr>
-nnoremap <silent> <m-k> : TmuxNavigateUp<cr>
-nnoremap <silent> <m-l> : TmuxNavigateRight<cr>
-nnoremap <silent> <c-\>: TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
 
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj:'
+
+
+
+
+
+
+"autocmd FileType python let b:coc_suggest_disable = 1
+
+
+
+
+map <leader>f <Plug>(easymotion-bd-f)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+let g:clever_f_chars_match_any_signs=':'
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let g:OmniSharp_server_stdio = 1
+
+
+let g:OmniSharp_loglevel = 'debug'
+
+" Use the stdio OmniSharp-roslyn server
+let g:OmniSharp_server_stdio = 1
+
+" Set the type lookup function to use the preview window instead of echoing it
+"let g:OmniSharp_typeLookupInPreview = 1
+
+" Timeout in seconds to wait for a response from the server
+let g:OmniSharp_timeout = 5
+
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview' if you
+" don't want to see any documentation whatsoever.
+set completeopt=longest,menuone,preview
+
+" Fetch full documentation during omnicomplete requests.
+" By default, only Type/Method signatures are fetched. Full documentation can
+" still be fetched when you need it with the :OmniSharpDocumentation command.
+"let g:omnicomplete_fetch_full_documentation = 1
+
+" Set desired preview window height for viewing documentation.
+" You might also want to look at the echodoc plugin.
+set previewheight=10
+
+" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" Update symantic highlighting on BufEnter and InsertLeave
+let g:OmniSharp_highlight_types = 2
+
+augroup omnisharp_commands
+    autocmd!
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+
+    " Find all code errors/warnings for the current solution and populate the quickfix window
+    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Enable snippet completion
+" let g:OmniSharp_want_snippet=1

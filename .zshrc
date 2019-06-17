@@ -252,6 +252,8 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+
 
 
 export VISUAL=nvim

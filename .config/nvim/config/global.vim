@@ -6,18 +6,19 @@ set showmode
 set showcmd
 set laststatus=2
 set matchpairs+=<:>
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+" set list
+" set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 set number
 set relativenumber
 " set statusline=%f%m%r%h%w\ [format=%{&ff}]\ [type=%y]\ [pos=%l,%v][%p%%]\ [buffer=%n]\ %{strftime('%c')}
 set statusline=%<%F\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}%=%l/%L,%c%V%8P
 set encoding=utf-8
 
-set hlsearch
+" set hlsearch
 set ignorecase                                                              " Case insensitive search
 set incsearch                                                               " Find as I type during the search
 set smartcase                                                               " Case sensitive only if search contains uppercase letter.
+set nohlsearch
 
 set ttyfast
 
@@ -50,7 +51,7 @@ set ignorecase
 
 
 "change dire
-set autochdir
+set autochdir 
 
 set completeopt=longest,menuone
 
@@ -60,29 +61,51 @@ set completeopt=longest,menuone
 
 
 
-
-iabbrev gob (<cr><cr>)<up><tab>
+iabbrev oc {<cr><cr>}<up><tab>
+iabbrev ob (<cr><cr>)<up><tab>
 iabbrev gar => {<cr><cr>}<up><tab>
-iabbrev goc {<cr><cr>}<up><tab>
+iabbrev far =>
+iabbrev tar ->
 iabbrev gc {}<left>
 iabbrev gb ()<left>
 iabbrev gc {}<left>
 iabbrev gs []<left>
-iabbrev gcc {{}}<left><left>
-iabbrev gss [[]]<left><left>
-iabbrev gsb [()]<left><left>
-iabbrev gbb (())<left><left>
-iabbrev gt <><left>
+iabbrev cc {{}}<left><left>
+iabbrev ss [[]]<left><left>
+iabbrev sb [()]<left><left>
+iabbrev bb (())<left><left>
 iabbrev gp \|
 iabbrev ga &
-iabbrev gaa &&
-iabbrev gpp \|\|
+iabbrev aa &&
+iabbrev pp \|\|
 iabbrev bt ``<left>
-iabbrev dl ${}<left>
-iabbrev gq ''<left>
-iabbrev dq ""<left>
-iabbrev ggg >>
-iabbrev gll <<
+iabbrev dlr ${}<left>
+iabbrev dsq ''<left>
+iabbrev ddq ""<left>
+iabbrev dgt >>
+iabbrev dlt <<
+iabbrev dt <><left>
+iabbrev gt >
+iabbrev lt <
+iabbrev ne !=
+iabbrev ee ==
+iabbrev sem ;
 iabbrev gu _
 
-" iabbrev gt < <>
+
+map s <nop>
+" inoremap b, ()<left>
+" inoremap c, {}<left>
+" inoremap s, []<left>
+" inoremap sq, ''<left>
+" inoremap dq, ""<left>
+
+
+" inoremap ob, ()<left><cr><c-o>O
+" inoremap oc, {}<left><cr><c-o>O
+" inoremap os, []<left><cr><c-o>O
+
+
+
+iabbrev ob ()<left><cr><bs><c-o>O
+iabbrev oc {}<left><cr><c-o>O
