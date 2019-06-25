@@ -1,0 +1,1 @@
+inoreabbrev dlr #{}<left>

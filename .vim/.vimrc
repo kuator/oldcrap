@@ -48,7 +48,7 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 "https://vim.fandom.com/wiki/256_colors_in_vim
-set t_Co=256
+"set t_Co=256
 
 " nmap <silent> gd <Plug>(coc-definition)
 
@@ -57,3 +57,12 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " Use the stdio version of OmniSharp-roslyn:
 let g:OmniSharp_server_stdio = 1
+
+let mapleader=" "
+"set termguicolors
+set updatetime=300
+
+augroup omnisharp_commands
+    autocmd!
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+augroup END

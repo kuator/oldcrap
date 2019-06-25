@@ -1,129 +1,87 @@
-if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
-	call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
-	call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
+let s:vim_config_dir = expand('~/.config/nvim')
+let s:vim_plug_script = s:vim_config_dir . '/autoload/plug.vim'
+let s:vim_plug_home = s:vim_config_dir . '/plugged'
+
+let s:just_installed_vim_plug = 0
+if !filereadable(s:vim_plug_script)
+  exe '!curl -fL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --create-dirs -o' shellescape(s:vim_plug_script)
+  autocmd VimEnter * PlugInstall --sync
 endif
 
-set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
+call plug#begin(s:vim_config_dir . '/plugged')
 
-call dein#begin(expand('~/.config/nvim'))
+" Editing {{{
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+  Plug 'easymotion/vim-easymotion'
+  " Plug 'justinmk/vim-sneak'
+  Plug 'godlygeek/tabular'
+" }}}
+" Text objects {{{
+  
+  Plug 'kana/vim-textobj-user'
+  Plug 'nelstrom/vim-textobj-rubyblock'
+  Plug 'michaeljsmith/vim-indent-object'
+  " Plug 'chaoren/vim-wordmotion'
+  " Plug 'bkad/CamelCaseMotion'
+  " Plug 'vim-scripts/ReplaceWithRegister'
+  " Plug 'kana/vim-submode'
+  " Plug 'hyhugh/vim-easyescape-plus'
+  Plug 'kana/vim-operator-user'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-line'
+  Plug 'kana/vim-textobj-indent'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'wellle/targets.vim'
+  " Plug 'kana/vim-textobj-fold'
+" }}}
 
-call dein#add('Shougo/dein.vim')
-call dein#add('haya14busa/dein-command.vim')
-call dein#add('wsdjeg/dein-ui.vim')
-
-call dein#add('johngrib/vim-game-code-break')
-"call dein#add('davidhalter/jedi-vim', {'lazy':1})
-call dein#add('godlygeek/tabular')
-call dein#add('mattn/emmet-vim')
-
-
-
-" LanguageClient {{{
-call dein#add('neoclide/coc.nvim', {'merge':0, 'build': './install.sh nightly'})
-" call dein#add('https://github.com/xuhdev/vim-latex-live-preview', {'lazy':1, 'on_ft':'tex'})
-call dein#add('https://github.com/lervag/vimtex', {'lazy':1, 'on_ft':'tex'})
-call dein#add('OmniSharp/omnisharp-vim')
+" Aesthetics {{{
+  Plug 'morhetz/gruvbox' 
+  Plug 'mhartington/oceanic-next' 
+  Plug 'tpope/vim-rsi' 
+  " Plug 'koron/nyancat-vim' 
 "}}}
 
-
-
-" Completions {{{
-
-" call dein#add('Shougo/deoplete.nvim', {'lazy': 1, 'on_event': 'InsertEnter'})
-" call dein#add('Shougo/deoplete.nvim', {'lazy':1, 'on_ft':['python']})
-" call dein#add('davidhalter/jedi-vim', {'lazy': 1, 'on_ft': ['python', 'cython', 'pyrex'] })
-" call dein#add('deoplete-plugins/deoplete-jedi', {'lazy':1, 'on_ft':'python'})
-"     if !has('nvim')
-"         call dein#add('roxma/nvim-yarp')
-"         call dein#add('roxma/vim-hug-neovim-rpc')
-"     endif
-
-
-
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('honza/vim-snippets')
-
-
-
-" call dein#add('mhartington/nvim-typescript', {'build': './install.sh', 'lazy': 1, 'on_source': ['deoplete.nvim']})
-"}}}
-
-"{{{ Denite
-call dein#add('Shougo/denite.nvim', {'rev':'0c74f5e0c96216370a1fcc48d63c07c3a253f685'})
-"}}}
-
-
-
-" Operators and text-objects {{{
-call dein#add('kana/vim-textobj-user')
-call dein#add('kana/vim-textobj-entire')
-call dein#add('wellle/targets.vim')
-call dein#add('rhysd/clever-f.vim')
-call dein#add('kana/vim-textobj-indent', {'lazy': 1, 'on_map':  [['ox', 'ai' , 'ii' , 'aI',  'iI']]})
-call dein#add('kana/vim-textobj-line', {'lazy': 1, 'on_map': [['ox', 'al', 'il']]})
-call dein#add('kana/vim-textobj-indent', {'lazy': 1, 'on_map':  [['ox', 'ai' , 'ii' , 'aI',  'iI']]})
-call dein#add('https://github.com/easymotion/vim-easymotion')
-call dein#add('https://github.com/tommcdo/vim-ninja-feet')
-call dein#add('https://github.com/AndrewRadev/dsf.vim')
-"}}}
-"
-
-
-
-" Utils {{{
-
-call dein#add('https://github.com/chrisbra/matchit')
-call dein#add('Shougo/defx.nvim')
-call dein#add('https://github.com/AndrewRadev/tagalong.vim')
-call dein#add('https://github.com/AndrewRadev/sideways.vim')
-" call dein#add('https://github.com/zhou13/vim-easyescape')
-call dein#add('tpope/vim-commentary')
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-surround')
-call dein#add('mhinz/vim-startify')
-call dein#add('https://github.com/yuttie/comfortable-motion.vim')
-call dein#add('ryanoasis/vim-devicons')
-call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('https://github.com/numirias/semshi')
-call dein#add('https://github.com/tpope/vim-rsi')
-call dein#add('https://github.com/AndrewRadev/switch.vim')
-" call dein#add('vim-airline/vim-airline')
-" call dein#add('vim-airline/vim-airline-themes')
-
-
-
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-call dein#add('dracula/vim')
-call dein#add('othree/yajs.vim', {'lazy': 1, 'on_ft':'javascript'})
-call dein#add('pangloss/vim-javascript', {'lazy': 1, 'on_ft':'javascript'})
-call dein#add('w0rp/ale')
-call dein#add('sheerun/vim-polyglot')
-call dein#add('https://github.com/pangloss/vim-javascript')
-call dein#add('HerringtonDarkholme/yats.vim')
-"call dein#add('machakann/vim-highlightedyank')
-"call dein#add('tmhedberg/SimpylFold')
-
-
-
-"Git
-call dein#add('tpope/vim-fugitive')
-"
-
-
-call dein#add('morhetz/gruvbox')                                                  " Gruvbox
-"call dein#add('NLKNguyen/papercolor-theme')                                       " Paper color theme
-"call dein#add('jacoborus/tender.vim')                                             " Tender
-"call dein#add('ayu-theme/ayu-vim')
-"call dein#add('https://github.com/cseelus/vim-colors-lucid')
-
-
-
-if dein#check_install()
-  call dein#install()
-  let pluginsExist=1
+" Shougo {{{
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
+"}}}
 
-call dein#end()
-filetype plugin indent on
+" Ctags {{{
+  Plug 'ludovicchabant/vim-gutentags'
+"}}}
+
+" HTML {{{
+  Plug 'mattn/emmet-vim'
+"}}}
+
+
+" Ctags {{{
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"}}}
+
+" Snippets {{{
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+"}}}
+
+
+" Ruby {{{
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-rake'
+  Plug 'tpope/vim-projectionist'
+"}}}
+call plug#end()
+
+

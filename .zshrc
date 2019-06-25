@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias cb="xclip -selection clipboard"
+alias :q="exit"
+alias q="exit"
 alias sl="ls"
 alias zic="nvim ~/.zshrc"
 alias vic="nvim ~/.vimrc"
@@ -272,7 +274,6 @@ if [ $(command -v rlwrap) ] ; then
   alias node='NODE_NO_READLINE=1 rlwrap node'
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 
@@ -369,3 +370,12 @@ export PIPENV_VENV_IN_PROJECT=true
 
 
 setopt extended_glob
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+

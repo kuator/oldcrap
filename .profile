@@ -75,3 +75,8 @@ xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
 xcape -t 1000 -e "Hyper_R=space"
 
 xset r rate 220 40
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
