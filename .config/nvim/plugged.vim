@@ -28,7 +28,7 @@ call plug#begin(s:vim_config_dir . '/plugged')
   " Plug 'kana/vim-submode'
   " Plug 'hyhugh/vim-easyescape-plus'
   Plug 'kana/vim-operator-user'
-  Plug 'kana/vim-textobj-entrire'
+  Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-line'
   Plug 'kana/vim-textobj-indent'
   Plug 'christoomey/vim-tmux-navigator'

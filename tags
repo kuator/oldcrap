@@ -19573,7 +19573,7 @@ s:keepcpo	.config/nvim/plugged/tagalong.vim/plugin/tagalong.vim	/^let s:keepcpo 
 s:key_sink	.config/nvim/plugged/fzf.vim/autoload/fzf/vim.vim	/^function! s:key_sink(line)$/;"	f
 s:known_files	.config/nvim/plugged/vim-gutentags/autoload/gutentags.vim	/^let s:known_files = []$/;"	v
 s:known_projects	.config/nvim/plugged/vim-gutentags/autoload/gutentags.vim	/^let s:known_projects = {}$/;"	v
-s:l	.vim/sessions/default.vim	/^let s:l = 140 - ((40 * winheight(0) + 21) \/ 42)$/;"	v
+s:l	.vim/sessions/default.vim	/^let s:l = 1 - ((0 * winheight(0) + 21) \/ 42)$/;"	v
 s:l	.vim/sessions/foo.vim	/^let s:l = 1 - ((0 * winheight(0) + 17) \/ 35)$/;"	v
 s:l0	.config/nvim/plugged/vim-indent-object/plugin/indent-object.vim	/^let s:l0 = -1$/;"	v
 s:l1	.config/nvim/plugged/vim-indent-object/plugin/indent-object.vim	/^let s:l1 = -1$/;"	v
