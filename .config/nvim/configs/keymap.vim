@@ -42,6 +42,7 @@ inoreabbrev   st       *
 inoreabbrev   lte      <=
 inoreabbrev   gte      >=
 inoreabbrev   ple      +=
+inoreabbrev   mie      -=
 inoreabbrev   lt       <
 inoreabbrev   leg      <=>
 inoreabbrev   gt       >
@@ -62,7 +63,7 @@ inoreabbrev   tar      ->
 inoreabbrev   ex       !
 inoreabbrev   qu       ?
 inoreabbrev   lam      =>{<cr>}<esc>O
-inoreabbrev   arr      =>{<cr>}<esc>O
+" inoreabbrev   arr      =>{<cr>}<esc>O
 inoreabbrev   ze       0
 inoreabbrev   on       1
 inoreabbrev   tw       2
@@ -110,5 +111,11 @@ vmap <Leader><Leader> <Esc>
 
 
 nnoremap <localleader>v :source $MYVIMRC<CR>
+nnoremap <leader>e :vsp $MYVIMRC<CR>
+
 nnoremap - $
 " nnoremap <localleader>wq! :wq!<CR>
+
+
+" nnoremap ` '
+nnoremap ' `

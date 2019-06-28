@@ -1,3 +1,5 @@
 [user]
 	email = kuatabylkasymov@gmail.com
 	name = Kuat Abylkassymov
+[core]
+	editor = nvim

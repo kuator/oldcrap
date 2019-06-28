@@ -1,12 +1,14 @@
 autocmd VimEnter * echo "<^.^>"
 filetype plugin indent on
 
+
 syntax on
 set autowrite
 set clipboard=unnamedplus
 set nowrap
 set hidden
 set number relativenumber
+set numberwidth=3
 set nobackup
 set noswapfile
 set incsearch
@@ -52,3 +54,4 @@ set pumblend=20
 " Invisible characters
 set list
 set listchars=tab:»\ ,trail:•,nbsp:~                                        " Display invisible characters
+set autoread

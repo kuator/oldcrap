@@ -239,6 +239,19 @@ nmap <localleader>f <Plug>(easymotion-bd-f)
 nmap <localleader>s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
-map <localleader>j <Plug>(easymotion-j)
-map <localleader>k <Plug>(easymotion-k)
+nmap <localleader>j <Plug>(easymotion-j)
+nmap <localleader>k <Plug>(easymotion-k)
+nmap <localleader>g <Plug>(easymotion-bd-jk)
+nmap <localleader>g <Plug>(easymotion-overwin-line)
 
+omap zw <Plug>(easymotion-bd-w)
+omap zf <Plug>(easymotion-bd-f)
+omap zj <Plug>(easymotion-j)
+omap zk <Plug>(easymotion-k)
+omap zg <Plug>(easymotion-bd-jk)
+
+" Targets.vim
+let g:targets_nl = 'nN'
+
+
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')

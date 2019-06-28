@@ -15,6 +15,7 @@ call plug#begin(s:vim_config_dir . '/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'easymotion/vim-easymotion'
+  Plug 'tommcdo/vim-ninja-feet'
   " Plug 'justinmk/vim-sneak'
   Plug 'godlygeek/tabular'
 " }}}
@@ -23,13 +24,11 @@ call plug#begin(s:vim_config_dir . '/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'michaeljsmith/vim-indent-object'
-  " Plug 'chaoren/vim-wordmotion'
-  " Plug 'bkad/CamelCaseMotion'
-  " Plug 'vim-scripts/ReplaceWithRegister'
+  
   " Plug 'kana/vim-submode'
   " Plug 'hyhugh/vim-easyescape-plus'
   Plug 'kana/vim-operator-user'
-  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-entrire'
   Plug 'kana/vim-textobj-line'
   Plug 'kana/vim-textobj-indent'
   Plug 'christoomey/vim-tmux-navigator'
@@ -56,16 +55,13 @@ else
 endif
 "}}}
 
-" Ctags {{{
-  Plug 'ludovicchabant/vim-gutentags'
-"}}}
 
 " HTML {{{
   Plug 'mattn/emmet-vim'
 "}}}
 
 
-" Ctags {{{
+" Coc {{{
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "}}}
 
@@ -82,6 +78,64 @@ endif
   Plug 'tpope/vim-rake'
   Plug 'tpope/vim-projectionist'
 "}}}
+
+
+" AndrewRadev {{{
+  Plug 'AndrewRadev/dsf.vim'
+  Plug 'AndrewRadev/tagalong.vim'
+  Plug 'AndrewRadev/sideways.vim'
+  Plug 'AndrewRadev/switch.vim'
+"}}}
+
+
+" Junnegunn {{{
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/vim-after-object'
+"}}}
+
+
+
+" Comfort {{{
+  Plug 'yuttie/comfortable-motion.vim'
+"}}}
+
+
+" Ctags {{{
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'liuchengxu/vista.vim'
+"}}}
+
+
+" HTML {{{
+  Plug 'othree/html5.vim'
+"}}}
+
+" CSS {{{
+  Plug 'hail2u/vim-css3-syntax'
+"}}}
+
+
+" markdown {{{
+  Plug 'plasticboy/vim-markdown'
+"}}}
+
+
+
 call plug#end()
 
+
+"Experimental
+" Plug 'chaoren/vim-wordmotion'
+" Plug 'bkad/CamelCaseMotion'
+" Plug 'vim-scripts/ReplaceWithRegister'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object#usage'
+" Plug 'michaeljsmith/vim-indent-object#usage'
+" Plug '907th/vim-auto-save'
+" Plug 'kshenoy/vim-signature'
+" Plug 'metakirby5/codi.vim'
+" Plug 'vimwiki/vimwiki'
+" Plug 'jez/vim-superman'
 

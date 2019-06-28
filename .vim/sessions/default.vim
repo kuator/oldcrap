@@ -2,16 +2,17 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd /mnt/myhdd/Documents/Programming/ruby
+cd ~/.dotfiles/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +162 /mnt/myhdd/Documents/Programming/ruby/script.rb
+badd +1 ~/.dotfiles/.config/nvim/init.vim
+badd +1 ~/.dotfiles/.config/nvim/plugged.vim
 argglobal
 silent! argdel *
-$argadd script.rb
-edit /mnt/myhdd/Documents/Programming/ruby/script.rb
+$argadd init.vim
+edit ~/.dotfiles/.config/nvim/plugged.vim
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -28,12 +29,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 157 - ((18 * winheight(0) + 19) / 39)
+let s:l = 140 - ((40 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-157
-normal! 0
+140
+normal! 09|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

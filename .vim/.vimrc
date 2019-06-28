@@ -26,6 +26,7 @@ Plug 'honza/vim-snippets'
 Plug 'rstacruz/vim-closer'
 Plug 'iandingx/leetcode.vim'
 Plug 'OmniSharp/omnisharp-vim'
+" Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
