@@ -105,7 +105,7 @@ alias :q="exit"
 alias q="exit"
 alias sl="ls"
 alias zic="nvim ~/.zshrc"
-alias vic="nvim ~/.vimrc"
+alias vic="vim ~/.vimrc"
 alias nic="nvim ~/.config/nvim/init.vim"
 alias pric="nvim ~/.profile"
 alias gotop="cd ~/Documents/Programming"
@@ -133,6 +133,7 @@ alias maketern="cp ~/.tern-project ."
 alias sim="cd /home/evakuator/Documents/kbtu/simulation/"
 alias con="cd /home/evakuator/.config/"
 alias doc="cd /home/evakuator/Documents/"
+alias des="cd /home/evakuator/Desktop/"
 alias dow="cd /home/evakuator/Downloads/"
 alias k="cd /home/evakuator/Documents/kbtu/"
 alias lar="cd /home/evakuator/Documents/kbtu/angular/"
@@ -375,6 +376,23 @@ setopt extended_glob
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:/home/evakuator/.gem/ruby/2.5.0/bin"
 
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:/mnt/myhdd/steamapps/common/Proton 4.2/dist/bin"
+
+# export GAME_ID="683320"  # GRIS
+# export STEAM_ROOT=/mnt/myhdd/
+# export PROTON_ROOT=$STEAM_ROOT/steamapps/common/Proton\ 4.2/dist
+# export HOST_LIBS=$HOME/.steam/ubuntu12_32/steam-runtime/amd64
+# export WINEPREFIX=$PROTON_ROOT/share/default_pfx/
+# export LD_LIBRARY_PATH="$PROTON_ROOT/lib64/"
+
+# export LD_LIBRARY_PATH="$PROTON_ROOT/lib64\
+# :$HOST_LIBS/lib/x86_64-linux-gnu\
+# :$HOST_LIBS/usr/lib/x86_64-linux-gnu\
+# "
+
+
+# WINEPREFIX="$STEAM_ROOT/steamapps/compatdata/$GAME_ID/pfx"

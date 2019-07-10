@@ -169,7 +169,7 @@ let g:coc_global_extensions =['coc-html',
 
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,javascript EmmetInstall
 
 
 
@@ -223,7 +223,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 inoremap <silent><expr> <m-space> coc#refresh()
@@ -254,4 +254,15 @@ omap zg <Plug>(easymotion-bd-jk)
 let g:targets_nl = 'nN'
 
 
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+" vim-after-object
+" autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+autocmd VimEnter * call after_object#enable([']', '['], '=', ':')
+
+" rainbow.vim
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+
+"titlecase.vim
+let g:titlecase_map_keys = 0
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase

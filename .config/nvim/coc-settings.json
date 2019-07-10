@@ -1,7 +1,9 @@
 {
-    "suggest.noselect": false,
-    "python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages",
-    "python.jediEnabled": true,
-    "python.venvPath": "/home/evakuator/Documents/.virtualenvs",
-    "solargraph.logLevel": "debug"
+  "suggest.noselect": false,
+  "python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages",
+  "python.jediEnabled": true,
+  "python.venvPath": "/home/evakuator/Documents/.virtualenvs",
+  "solargraph.logLevel": "debug",
+  "emmet.includeLanguages": {
+  } 
 }

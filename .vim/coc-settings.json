@@ -1,5 +1,5 @@
 {
- "suggest.noselect": false,
+"suggest.noselect": false,
 "python.jediEnabled": true,
-"python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages"
+"python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages",
 }

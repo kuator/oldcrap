@@ -12,10 +12,10 @@ call plug#begin(s:vim_config_dir . '/plugged')
 
 " Editing {{{
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'easymotion/vim-easymotion'
-  Plug 'tommcdo/vim-ninja-feet'
   " Plug 'justinmk/vim-sneak'
   Plug 'godlygeek/tabular'
 " }}}
@@ -31,13 +31,13 @@ call plug#begin(s:vim_config_dir . '/plugged')
   Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-line'
   Plug 'kana/vim-textobj-indent'
-  Plug 'christoomey/vim-tmux-navigator'
   Plug 'wellle/targets.vim'
   " Plug 'kana/vim-textobj-fold'
 " }}}
 
 " Aesthetics {{{
   Plug 'morhetz/gruvbox' 
+
   Plug 'mhartington/oceanic-next' 
   Plug 'tpope/vim-rsi' 
   " Plug 'koron/nyancat-vim' 
@@ -93,6 +93,7 @@ endif
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/vim-after-object'
+  Plug 'junegunn/limelight.vim'
 "}}}
 
 
@@ -109,23 +110,34 @@ endif
 
 
 " HTML {{{
-  Plug 'othree/html5.vim'
+  " Plug 'othree/html5.vim'
 "}}}
 
 " CSS {{{
-  Plug 'hail2u/vim-css3-syntax'
+  " Plug 'hail2u/vim-css3-syntax'
 "}}}
 
 
-" markdown {{{
-  Plug 'plasticboy/vim-markdown'
+" Syntax {{{
+  " Plug 'sheerun/vim-polyglot'
+  " Plug 'luochen1990/rainbow'
+
 "}}}
 
+" Chris Toomey
+" {{{
+  Plug 'christoomey/vim-sort-motion' 
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'christoomey/vim-titlecase'
+" }}}
 
+" javascript {{{
+  Plug 'pangloss/vim-javascript' 
+  Plug 'isRuslan/vim-es6' 
+" }}}
 
 call plug#end()
-
-
+filetype plugin on
 "Experimental
 " Plug 'chaoren/vim-wordmotion'
 " Plug 'bkad/CamelCaseMotion'
@@ -138,4 +150,7 @@ call plug#end()
 " Plug 'metakirby5/codi.vim'
 " Plug 'vimwiki/vimwiki'
 " Plug 'jez/vim-superman'
+" Plug 'tommcdo/vim-ninja-feet'
+" Plug 'tmsvg/pear-tree'
+" Plug 'amadeus/vim-convert-color-to'
 

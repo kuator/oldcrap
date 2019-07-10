@@ -3,3 +3,20 @@
 	name = Kuat Abylkassymov
 [core]
 	editor = nvim
+	excludesfile = /home/evakuator/.global_gitignore
+
+[difftool]
+    trustExitCode = true
+# the option is mergetool.<tool>.trustExitCode
+# replace nvimdiff4 with the name of the mergetool you use
+
+[merge]
+    tool = nvimdiff4
+    # if not using a tool name with builtin support, must supply mergetool cmd
+    # as below
+
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[mergetool "nfugitive"]
+    cmd = nvim -f -c "Gdiff" "$MERGED"
