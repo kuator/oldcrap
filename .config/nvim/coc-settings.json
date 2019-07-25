@@ -5,5 +5,8 @@
   "python.venvPath": "/home/evakuator/Documents/.virtualenvs",
   "solargraph.logLevel": "debug",
   "emmet.includeLanguages": {
-  } 
+  },
+  "solargraph.diagnostics": true,
+  "javascript.suggest.autoImports": true,
+  "diagnostic.messageTarget": "echo"
 }

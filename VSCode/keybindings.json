@@ -1,8 +1,11 @@
-// Place your key bindings in this file to override the defaults
-//[
-// {
-//     "key": "ctrl+k",
-//     "command": "selectPrevSuggestion",
-//     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-// },
-//]
+[
+{
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    }
+]

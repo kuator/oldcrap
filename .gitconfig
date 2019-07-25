@@ -20,3 +20,5 @@
 
 [mergetool "nfugitive"]
     cmd = nvim -f -c "Gdiff" "$MERGED"
+[color]
+	ui = auto

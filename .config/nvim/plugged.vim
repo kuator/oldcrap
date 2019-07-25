@@ -153,4 +153,3 @@ filetype plugin on
 " Plug 'tommcdo/vim-ninja-feet'
 " Plug 'tmsvg/pear-tree'
 " Plug 'amadeus/vim-convert-color-to'
-

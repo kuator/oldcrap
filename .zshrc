@@ -105,7 +105,7 @@ alias :q="exit"
 alias q="exit"
 alias sl="ls"
 alias zic="nvim ~/.zshrc"
-alias vic="vim ~/.vimrc"
+alias vic="nvim ~/.vimrc"
 alias nic="nvim ~/.config/nvim/init.vim"
 alias pric="nvim ~/.profile"
 alias gotop="cd ~/Documents/Programming"
@@ -396,3 +396,5 @@ export PATH="$PATH:/mnt/myhdd/steamapps/common/Proton 4.2/dist/bin"
 
 
 # WINEPREFIX="$STEAM_ROOT/steamapps/compatdata/$GAME_ID/pfx"
+
+stty -ixon

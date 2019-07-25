@@ -1,53 +1,29 @@
 {
-
-    "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
-    "workbench.colorTheme": "ƒ - Gruvbox",
-    "workbench.iconTheme": "material-icon-theme",
-    "keyboard.dispatch": "keyCode",
-    "vim.useCtrlKeys": true,
-
-"vim.easymotionMarkerFontFamily":"monospace",
-  "eslint.options": { "configFile": "/home/evakuator/.eslintrc.json" },
-    "vim.useSystemClipboard": true,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "k",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
-    ],
-    "vim.easymotion": true,
-    "vim.leader": "<space>",
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [ "ctrl+h" ],
-            "commands": [ "workbench.action.navigateLeft" ]
-        },
-        {
-            "before": [ "ctrl+l" ],
-            "commands": [ "workbench.action.navigateRight" ]
-        },
-        {
-            "before": [ "ctrl+k" ],
-            "commands": [ "workbench.action.navigateUp" ]
-        },
-        {
-            "before": [ "ctrl+j" ],
-            "commands": [ "workbench.action.navigateDown" ]
-        },
-{
-            "before": ["ctrl", "w"],
-            "commands": [
-                "workbench.action.focusActiveEditorGroup"
-            ]
-        }
-
-    ],
-"editor.lineHighlightBackground": "#1E1E1EAA",
-"window.zoomLevel": 0,
-"editor.lineNumbers": "relative",
+"keyboard.dispatch": "keyCode",
+"vim.useSystemClipboard": true,
+"vim.insertModeKeyBindings": [ { "before": ["k", "j"], "after": ["<esc>"] }],
+"terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
+"workbench.iconTheme": "material-icon-theme",
+"background.enabled": true,
+"background.customImages": ["https://www.mvm-films.com/images/gallery/gallery-monogatari2.jpg"], 
+"background.useDefault": false,
+"background.style": {
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "100%",
+    "height": "100%",
+    "background-position": "100% 100%",
+    "background-repeat": "no-repeat",
+    "background-size":"cover",
+    "opacity": 0.2
+},
+"editor.lineNumbers": "on",
+"emmet.includeLanguages": {
+},
+"files.autoSave": "off",
+"editor.codeLens": false,
+"window.zoomLevel": -1,
+"workbench.colorTheme": "Dracula"
 }
