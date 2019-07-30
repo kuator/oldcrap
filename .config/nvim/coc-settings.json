@@ -8,5 +8,7 @@
   },
   "solargraph.diagnostics": true,
   "javascript.suggest.autoImports": true,
-  "diagnostic.messageTarget": "echo"
+  "diagnostic.messageTarget": "echo",
+  "snippets.extends": {  "ruby": ["rails"]  },
+  "omnisharp.useDotnet": false
 }

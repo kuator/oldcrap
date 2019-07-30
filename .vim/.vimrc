@@ -19,10 +19,9 @@ endif
 call plug#begin(expand('~/.vim/plugged'))
 
 " (Optional) Multi-entry selection UI.
-" Plug 'junegunn/fzf'
+Plug 'junegunn/fzf'
 
 Plug 'pangloss/vim-javascript'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'amadeus/vim-convert-color-to'
@@ -31,7 +30,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
-" Plug 'andymass/vim-matchup'
 Plug 'othree/html5.vim'
 Plug 'tek/vim-textobj-ruby'
 Plug 'kana/vim-textobj-user'
@@ -44,8 +42,26 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
-" Plug 'isRuslan/vim-es6'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'w0rp/ale'
+
+
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/denite.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 call plug#end()
 
@@ -85,8 +101,6 @@ let &t_EI = "\<Esc>[2 q"
 "https://vim.fandom.com/wiki/256_colors_in_vim
 "set t_Co=256
 
-" nmap <silent> gd <Plug>(coc-definition)
-
 syntax enable
 filetype plugin indent on
 set termguicolors
@@ -96,14 +110,12 @@ colorscheme gruvbox
 set background=dark
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
-hi! Pmenusel guifg=white guibg=#666666
-hi! Pmenu guifg=white guibg=#555555
 hi! LineNr guifg=white guibg=NONE
-hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 hi! SignColumn guibg=NONE ctermbg=NONE
+hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+hi! CursorLineNr ctermbg=NONE guibg=NONE
+hi! Pmenusel guifg=white guibg=#504945
 hi! Comment guifg=#ABaaaa
-hi! CocErrorSign guifg=#F78080
-
 
 let mapleader=" "
 set updatetime=100
@@ -128,43 +140,6 @@ set updatetime=300
 set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
-" Remap keys for gotos
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gy <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> <leader>[c <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>]c <Plug>(coc-diagnostic-next)
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Use <C-l> for trigger snippet expand.
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-
-" Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 " Show file options above the command line
 set wildmenu
@@ -174,14 +149,14 @@ set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
 
 set scrolloff=5       " Start scrolling n lines before horizontal
-                      " border of window.
+" border of window.
 set sidescrolloff=7   " Start scrolling n chars before end of screen.
 
 " set foldmethod=syntax " syntax highlighting items specify folds
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:user_emmet_install_global = 0
@@ -191,10 +166,47 @@ set wildcharm=<C-z>
 " nnoremap ,e :e **/*<C-z><S-Tab>
 " nnoremap ,f :find **/*<C-z><S-Tab>
 
-" ergonomics
-inoremap <c-s><c-h> (
-inoremap <c-s><c-j> )
-inoremap <c-s><c-k> {
-inoremap <c-s><c-l> }
-inoremap <c-s><c-d> *
-inoremap <c-s><c-f> _
+set hidden
+
+let g:LanguageClient_serverCommands = {
+      \ 'javascript': ['typescript-language-server', '--stdio'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'ruby': ['solargraph', 'stdio'],
+      \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \ }
+
+call deoplete#custom#source('_', 'sorters', ['sorter_word'])
+call deoplete#custom#source('ultisnips', 'rank', 9999)
+
+function! s:is_ultisnips_expandable()
+
+  " get word before cursor
+  let word = matchstr(getline('.'), printf('\v\w*%%%dc\w', col('.') - 1))
+  if(empty(word))
+    return 0
+  endif
+
+  " test word against triggers
+  return !empty(filter(UltiSnips#SnippetsInCurrentScope(), {k,v -> k ==# word}))
+
+endfunction
+
+inoremap <expr> <c-y>
+            \ pumvisible() ? 
+            \ <sid>is_ultisnips_expandable() ?
+            \ "<C-R>=UltiSnips#ExpandSnippet()<cr>" :
+            \"<c-y>" : "<c-y>"

@@ -13,31 +13,30 @@ if !filereadable(s:vim_plug_script)
 endif
 
 call plug#begin(s:vim_config_dir . '/plugged')
-
-" (Optional) Multi-entry selection UI.
-" Plug 'junegunn/fzf'
-
-" (Optional) Multi-entry selection UI.
-" Plug 'junegunn/fzf'
-
 " Plug 'isRuslan/vim-es6'
 " Plug 'SirVer/ultisnips'
-Plug 'amadeus/vim-convert-color-to'
-Plug 'chrisbra/NrrwRgn'
-Plug 'godlygeek/tabular'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-operator-user'
 Plug 'honza/vim-snippets'
-Plug 'jasonlong/vim-textobj-css'
+Plug 'amadeus/vim-convert-color-to'
+Plug 'AndrewRadev/dsf.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'chrisbra/NrrwRgn'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'godlygeek/tabular'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-user'
-Plug 'mattn/emmet-vim'
+Plug 'jasonlong/vim-textobj-css'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'tek/vim-textobj-ruby'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
@@ -47,7 +46,6 @@ Plug 'desmap/slick'
 Plug 'flazz/vim-colorschemes'
 " Tmux/Neovim movement integration
 Plug 'christoomey/vim-tmux-navigator'
-
 
 call plug#end()
 
@@ -96,6 +94,7 @@ syntax enable
 filetype plugin indent on
 set termguicolors
 set hlsearch
+" colorscheme slick
 colorscheme gruvbox
 " colorscheme slick
 " colorscheme OceanicNext
@@ -107,20 +106,9 @@ hi! SignColumn guibg=NONE ctermbg=NONE
 hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 hi! CursorLineNr ctermbg=NONE guibg=NONE
 hi! Pmenusel guifg=white guibg=#504945
-
-
-
-" hi! Normal ctermbg=NONE guibg=NONE
-" hi! NonText ctermbg=NONE guibg=NONE
-" hi! Pmenusel guifg=white guibg=#666666
-" hi! Pmenu guifg=white guibg=#555555
-" hi! LineNr guifg=white guibg=NONE
-" hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-" hi! SignColumn guibg=NONE ctermbg=NONE
-" hi! Comment guifg=#ABaaaa
-" hi! CocErrorSign guifg=#F78080
-
-
+hi! Comment guifg=#ABaaaa
+hi! CocErrorSign guifg=#F78080
+hi! CursorLine guifg=white guibg=NONE gui=bold
 
 
 " hi! CocFloating guibg=NONE guifg=white 
@@ -179,7 +167,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 
 " Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
@@ -226,6 +214,7 @@ autocmd FileType html,css EmmetInstall
 set wildcharm=<C-z>
 nnoremap ,e :e **/*<C-z><S-Tab>
 nnoremap ,f :find **/*<C-z><S-Tab>
+nnoremap <silent> ,g :grep! -Rin --exclude-dir={.git,node_modules,tmp,log} <cword> .<Cr>:cw<Cr>
 
 augroup VimCSS3Syntax
   autocmd!
@@ -250,10 +239,90 @@ nnoremap gu g~
 vnoremap gu g~
 
 
-
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-w><c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-w><c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-w><c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-w><c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
+
+
+
+" For all buffers
+call denite#custom#option('_', {
+	\ 'empty': 0,
+	\ 'auto_resume': 1,
+	\ 'statusline': 1,
+	\ 'start_filter': 1,
+	\ 'vertical_preview': 1,
+	\ 'prompt': '❯❯❯',
+	\ })
+
+if has('nvim')
+	call denite#custom#option('_', { 'split': 'floating' })
+endif
+
+call denite#custom#option('_', {'root_markers': 'init.vim, .git, package.json'} )
+" call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
+call denite#custom#option('_', 'highlight_mode_insert', 'None')
+call denite#custom#option('_', 'highlight_matched_range', 'None')
+call denite#custom#option('_', 'highlight_matched_char', 'None')
+call denite#custom#option('_', 'highlight_window_background', 'None')
+call denite#custom#option('_', 'highlight_filter_background', 'None')
+call denite#custom#option('_', 'highlight_preview_line', 'None')
+call denite#custom#option('_', 'highlight_prompt', 'None')
+
+call denite#custom#var('file/rec', 'command',
+	\ ['rg', '--files', '--glob', '!.git'])
+
+call denite#custom#source('file', 'matchers',
+      \ ['converter/abbr_word', 'matcher/fuzzy'])
+
+nnoremap <silent><leader>do :<C-u>Denite file/old -default-action=switch <CR>
+nnoremap <silent><leader>df :Denite file/rec <cr>
+nnoremap <silent><leader>dg :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
+nnoremap <silent><leader>dp :<c-u>DeniteProjectDir file/rec <cr>
+
+" nnoremap <silent><localleader>o :<C-u>Denite file/old -default-action=switch <CR>
+" nnoremap <silent><localleader>f :Denite file/rec <cr>
+" nnoremap <silent><localleader>g :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
+" nnoremap <silent><localleader>p :<c-u>DeniteProjectDir file/rec <cr>
+
+
+
+
+
+" KEY MAPPINGS
+autocmd FileType denite call s:denite_settings()
+function! s:denite_settings() abort
+	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> d    denite#do_map('do_action', 'delete')
+	nnoremap <silent><buffer><expr> p    denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> t    denite#do_map('do_action', 'tabopen')
+	nnoremap <silent><buffer><expr> v    denite#do_map('do_action', 'vsplit')
+	nnoremap <silent><buffer><expr> h    denite#do_map('do_action', 'split')
+	nnoremap <silent><buffer><expr> -    denite#do_map('do_action', 'split')
+	nnoremap <silent><buffer><expr> '    denite#do_map('quick_move')
+	nnoremap <silent><buffer><expr> q    denite#do_map('quit')
+	nnoremap <silent><buffer><expr> r    denite#do_map('redraw')
+	nnoremap <silent><buffer><expr> yy   denite#do_map('do_action', 'yank')
+	nnoremap <silent><buffer><expr> <Esc>   denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <C-u>   denite#do_map('restore_sources')
+	nnoremap <silent><buffer><expr> <C-f>   denite#do_map('do_action', 'defx')
+	nnoremap <silent><buffer><expr> <C-x>   denite#do_map('choose_action')
+	nnoremap <silent><buffer><expr><nowait> <Space> denite#do_map('toggle_select').'j'
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_settings()
+function! s:denite_filter_settings() abort
+	nnoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
+	inoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
+  inoremap <silent><buffer><expr> <cr>   denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> q      denite#do_map('quit')
+	inoremap <silent><buffer><expr> <C-c>  denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <C-c>  denite#do_map('quit')
+	inoremap <silent><buffer>       kj     <Esc><C-w>p
+	nnoremap <silent><buffer>       kj     <Esc><C-w>p
+endfunction
+
