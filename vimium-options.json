@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.64.3",
+  "settingsVersion": "1.64.6",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -9,7 +9,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "map << moveTabLeft\nmap >> moveTabRight\nmap gj previousTab\nmap gk nextTab\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap O Vomnibar.activate\nmap B Vomnibar.activateBookmarks",
+  "keyMappings": "map << moveTabLeft\nmap >> moveTabRight\nmap gj previousTab\nmap gk nextTab\nunmap d\nunmap e\nmap d previousTab\nmap e nextTab\nmap , moveTabLeft\nmap . moveTabRight\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap O Vomnibar.activate\nmap B Vomnibar.activateBookmarks\nunmap <c-d>\nunmap <c-e>",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "pages/blank.html",

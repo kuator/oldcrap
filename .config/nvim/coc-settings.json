@@ -10,5 +10,6 @@
   "javascript.suggest.autoImports": true,
   "diagnostic.messageTarget": "echo",
   "snippets.extends": {  "ruby": ["rails"]  },
-  "omnisharp.useDotnet": false
+  "omnisharp.useDotnet": false,
+  "python.autoComplete.addBrackets": true
 }

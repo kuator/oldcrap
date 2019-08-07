@@ -173,7 +173,7 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript': ['typescript-language-server', '--stdio'],
       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'python': ['pyls'],
       \ 'ruby': ['solargraph', 'stdio'],
       \ }
 
@@ -210,3 +210,9 @@ inoremap <expr> <c-y>
             \ <sid>is_ultisnips_expandable() ?
             \ "<C-R>=UltiSnips#ExpandSnippet()<cr>" :
             \"<c-y>" : "<c-y>"
+
+set pyxversion=3
+
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}

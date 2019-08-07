@@ -30,10 +30,12 @@ Plug 'jasonlong/vim-textobj-css'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-denite'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -71,7 +73,7 @@ set incsearch
 set nowrap
 set ignorecase
 set smartcase
-set mouse=n
+" set mouse=n
 set nobackup
 set nowritebackup
 set noswapfile
@@ -326,3 +328,5 @@ function! s:denite_filter_settings() abort
 	nnoremap <silent><buffer>       kj     <Esc><C-w>p
 endfunction
 
+
+nnoremap <leader><leader> :w<cr>

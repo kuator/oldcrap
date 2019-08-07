@@ -144,36 +144,6 @@ alias git-root='cd $(git rev-parse --show-cdup)'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# added by Anaconda3 2018.12 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-
-#__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/evakuator/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    \eval "$__conda_setup"
-#else
-#    if [ -f "/home/evakuator/anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/evakuator/anaconda3/etc/profile.d/conda.sh"
-#        CONDA_CHANGEPS1=false conda activate base
-#    else
-#        \export PATH="/home/evakuator/anaconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-
-# <<< conda init <<<
-
-
-. /home/evakuator/anaconda3/etc/profile.d/conda.sh
-
-
-
-
-# export PROMPT='[${ret_status}%{$fg[magenta]%}%n@%{$fg[red]%}%m]-[%{$fg[cyan]%}%c%{$reset_color%}]%{$fg_bold[blue]%}-[%T]%{$reset_color%}$ '
-# PS1='%m %1d$ '
-
-
-
 # Set zsh mode to vi over emacs
 bindkey -v
 
