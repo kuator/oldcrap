@@ -1,5 +1,6 @@
 {
 "keyboard.dispatch": "keyCode",
+"ruby.intellisense": "rubyLocate",
 "vim.useSystemClipboard": true,
 "vim.insertModeKeyBindings": [ { "before": ["k", "j"], "after": ["<esc>"] }],
 "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",

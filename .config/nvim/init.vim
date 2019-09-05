@@ -18,10 +18,12 @@ call plug#begin(s:vim_config_dir . '/plugged')
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-operator-user'
 Plug 'honza/vim-snippets'
-Plug 'amadeus/vim-convert-color-to'
+" Plug 'amadeus/vim-convert-color-to'
 Plug 'AndrewRadev/dsf.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'peitalin/vim-jsx-typescript'
+Plug 'liuchengxu/vista.vim'
 Plug 'Shougo/denite.nvim'
-Plug 'chrisbra/NrrwRgn'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'godlygeek/tabular'
 Plug 'kana/vim-textobj-entire'
@@ -43,7 +45,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'wellle/targets.vim'
+" Plug 'wellle/targets.vim'
 Plug 'desmap/slick'
 Plug 'flazz/vim-colorschemes'
 " Tmux/Neovim movement integration
@@ -61,12 +63,12 @@ omap ' `
 map s <nop>
 
 " Tabulation and spaces
+filetype plugin indent on
 set expandtab                                                               " Show spaces instead of tabs
 set shiftwidth=0                                                            " columns per <<
 set softtabstop=2                                                           " spaces per tab
 set tabstop=2                                                               " columns per tabs
 set autoindent
-set smartindent
 set number
 set relativenumber
 set incsearch
@@ -93,7 +95,6 @@ let &t_EI = "\<Esc>[2 q"
 " nmap <silent> gd <Plug>(coc-definition)
 
 syntax enable
-filetype plugin indent on
 set termguicolors
 set hlsearch
 " colorscheme slick
@@ -280,10 +281,17 @@ call denite#custom#var('file/rec', 'command',
 call denite#custom#source('file', 'matchers',
       \ ['converter/abbr_word', 'matcher/fuzzy'])
 
+" nnoremap <silent><leader>do :<C-u>Denite file/old -default-action=switch <CR>
+" nnoremap <silent><leader>df :Denite file/rec <cr>
+" nnoremap <silent><leader>dg :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
+" nnoremap <silent><leader>dp :<c-u>DeniteProjectDir file/rec <cr>
+
+
 nnoremap <silent><leader>do :<C-u>Denite file/old -default-action=switch <CR>
 nnoremap <silent><leader>df :Denite file/rec <cr>
 nnoremap <silent><leader>dg :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
 nnoremap <silent><leader>dp :<c-u>DeniteProjectDir file/rec <cr>
+nnoremap <silent><leader><leader> :<c-u>DeniteProjectDir file/rec <cr>
 
 " nnoremap <silent><localleader>o :<C-u>Denite file/old -default-action=switch <CR>
 " nnoremap <silent><localleader>f :Denite file/rec <cr>
@@ -319,7 +327,7 @@ endfunction
 autocmd FileType denite-filter call s:denite_filter_settings()
 function! s:denite_filter_settings() abort
 	nnoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
-	inoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
+  inoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
   inoremap <silent><buffer><expr> <cr>   denite#do_map('do_action')
 	nnoremap <silent><buffer><expr> q      denite#do_map('quit')
 	inoremap <silent><buffer><expr> <C-c>  denite#do_map('quit')
@@ -329,4 +337,6 @@ function! s:denite_filter_settings() abort
 endfunction
 
 
-nnoremap <leader><leader> :w<cr>
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/usr/bin/python3'
+

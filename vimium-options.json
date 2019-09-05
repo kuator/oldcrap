@@ -4,12 +4,16 @@
     {
       "pattern": "https?://mail.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "h p"
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "map << moveTabLeft\nmap >> moveTabRight\nmap gj previousTab\nmap gk nextTab\nunmap d\nunmap e\nmap d previousTab\nmap e nextTab\nmap , moveTabLeft\nmap . moveTabRight\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap O Vomnibar.activate\nmap B Vomnibar.activateBookmarks\nunmap <c-d>\nunmap <c-e>",
+  "keyMappings": "map << moveTabLeft\nmap >> moveTabRight\nmap gj previousTab\nmap gk nextTab\nunmap d\nunmap e\nmap d previousTab\nmap e nextTab\nmap , moveTabLeft\nmap . moveTabRight\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap O Vomnibar.activate\nmap B Vomnibar.activateBookmarks\nunmap <c-d>\nunmap <c-e>\nmap ' `\nmap ` '",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "pages/blank.html",

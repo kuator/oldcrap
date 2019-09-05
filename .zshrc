@@ -284,7 +284,7 @@ mkcd() {
 
 
 # zsh-virtualenv-autodetect
-. $HOME/.zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
+# . $HOME/.zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
 
 # autojump
 . /usr/share/autojump/autojump.sh
@@ -336,7 +336,7 @@ export TERM=xterm-256color
 
 
 
-export AUTOSWITCH_VIRTUAL_ENV_DIR="$HOME/Documents/.virtualenvs"
+# export AUTOSWITCH_VIRTUAL_ENV_DIR="$HOME/Documents/.virtualenvs"
 export PIPENV_VENV_IN_PROJECT=true
 
 
