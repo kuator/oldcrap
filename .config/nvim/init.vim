@@ -13,43 +13,32 @@ if !filereadable(s:vim_plug_script)
 endif
 
 call plug#begin(s:vim_config_dir . '/plugged')
-" Plug 'isRuslan/vim-es6'
-" Plug 'SirVer/ultisnips'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-operator-user'
 Plug 'honza/vim-snippets'
-" Plug 'amadeus/vim-convert-color-to'
-Plug 'AndrewRadev/dsf.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'peitalin/vim-jsx-typescript'
-Plug 'liuchengxu/vista.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/denite.nvim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'godlygeek/tabular'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
-Plug 'jasonlong/vim-textobj-css'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-denite'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-" Plug 'wellle/targets.vim'
-Plug 'desmap/slick'
 Plug 'flazz/vim-colorschemes'
-" Tmux/Neovim movement integration
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'wellle/targets.vim'
+Plug 'raghur/fruzzy', {'do': { -> fruzzy#install()}}
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
@@ -66,8 +55,8 @@ map s <nop>
 filetype plugin indent on
 set expandtab                                                               " Show spaces instead of tabs
 set shiftwidth=0                                                            " columns per <<
-set softtabstop=2                                                           " spaces per tab
 set tabstop=2                                                               " columns per tabs
+set softtabstop=2                                                           " spaces per tab
 set autoindent
 set number
 set relativenumber
@@ -97,11 +86,11 @@ let &t_EI = "\<Esc>[2 q"
 syntax enable
 set termguicolors
 set hlsearch
-" colorscheme slick
 colorscheme gruvbox
-" colorscheme slick
-" colorscheme OceanicNext
 set background=dark
+
+
+
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! LineNr guifg=white guibg=NONE
@@ -114,17 +103,13 @@ hi! CocErrorSign guifg=#F78080
 hi! CursorLine guifg=white guibg=NONE gui=bold
 
 
+
 " hi! CocFloating guibg=NONE guifg=white 
 
 let mapleader=" "
+let maplocalleader="s"
 set updatetime=100
 
-" Use the stdio version of OmniSharp-roslyn:
-" let g:OmniSharp_server_stdio = 1
-" augroup omnisharp_commands
-"     autocmd!
-"     autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-" augroup END
 
 inoreabbr lam =>
 inoreabbr far =>
@@ -133,69 +118,23 @@ inoreabbr pl +
 inoreabbr ex !
 
 set ttimeoutlen=50
-tnoremap <esc> <C-\><C-n>
-nnoremap <c-l> <c-l>:nohl<cr>
+" tnoremap <esc> <C-\><C-n>
+nnoremap <silent><c-l> <c-l>:nohl<cr>
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set signcolumn=yes
 
 
-" if hidden is not set, TextEdit might fail.
 set hidden
-" Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
-" Better display for messages
 set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
-" don't give |ins-completion-menu| messages.
 set shortmess+=c
-" always show signcolumns
 set signcolumn=yes
-" Remap keys for gotos
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gy <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> <leader>[c <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>]c <Plug>(coc-diagnostic-next)
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Use <C-l> for trigger snippet expand.
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Show file options above the command line
 set wildmenu
-" Don't offer to open certain files/directories
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
-set wildignore+=node_modules/*,bower_components/*
+set wildignore+=*/node_modules/*,bower_components/*
 
 set scrolloff=5       " Start scrolling n lines before horizontal
                       " border of window.
@@ -203,27 +142,14 @@ set sidescrolloff=7   " Start scrolling n chars before end of screen.
 
 " set foldmethod=syntax " syntax highlighting items specify folds
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
-
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key=','
-autocmd FileType html,css EmmetInstall
 set wildcharm=<C-z>
-nnoremap ,e :e **/*<C-z><S-Tab>
-nnoremap ,f :find **/*<C-z><S-Tab>
-nnoremap <silent> ,g :grep! -Rin --exclude-dir={.git,node_modules,tmp,log} <cword> .<Cr>:cw<Cr>
 
-augroup VimCSS3Syntax
-  autocmd!
+" augroup VimCSS3Syntax
+"   autocmd!
 
-  autocmd FileType css setlocal iskeyword-=-
-augroup END
+"   autocmd FileType css setlocal iskeyword-=-
+" augroup END
 
 
 " ergonomics
@@ -234,13 +160,8 @@ inoremap <c-s><c-l> }
 inoremap <c-s><c-d> *
 inoremap <c-s><c-f> _
 
-
 " Targets.vim
 let g:targets_nl = 'nN'
-
-nnoremap gu g~
-vnoremap gu g~
-
 
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-w><c-h> :TmuxNavigateLeft<cr>
@@ -249,7 +170,34 @@ nnoremap <silent> <c-w><c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-w><c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/usr/bin/python3'
 
+
+"EasyMotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap <localleader>w <Plug>(easymotion-bd-w)
+nmap <localleader>w <Plug>(easymotion-overwin-w)
+nmap <localleader>f <Plug>(easymotion-bd-f)
+nmap <localleader>s <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+nmap <localleader>j <Plug>(easymotion-j)
+nmap <localleader>k <Plug>(easymotion-k)
+nmap <localleader>g <Plug>(easymotion-bd-jk)
+nmap <localleader>g <Plug>(easymotion-overwin-line)
+
+omap zw <Plug>(easymotion-bd-w)
+omap zf <Plug>(easymotion-bd-f)
+omap zj <Plug>(easymotion-j)
+omap zk <Plug>(easymotion-k)
+omap zg <Plug>(easymotion-bd-jk)
+omap zz <Plug>(easymotion-bd-f2)
+
+
+autocmd FileType python setlocal tabstop=4
+
+let g:EasyMotion_keys = 'asdfghjkl;'
 
 " For all buffers
 call denite#custom#option('_', {
@@ -265,7 +213,8 @@ if has('nvim')
 	call denite#custom#option('_', { 'split': 'floating' })
 endif
 
-call denite#custom#option('_', {'root_markers': 'init.vim, .git, package.json'} )
+" call denite#custom#option('_', {'root_markers': 'init.vim, .git, package.json'} )
+
 " call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
 call denite#custom#option('_', 'highlight_mode_insert', 'None')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
@@ -276,10 +225,16 @@ call denite#custom#option('_', 'highlight_preview_line', 'None')
 call denite#custom#option('_', 'highlight_prompt', 'None')
 
 call denite#custom#var('file/rec', 'command',
-	\ ['rg', '--files', '--glob', '!.git'])
+	\ ['rg', '--files', '--hidden', '--glob', '!.git', '--glob', '!node_modules', '--glob', '!venv'])
 
-call denite#custom#source('file', 'matchers',
-      \ ['converter/abbr_word', 'matcher/fuzzy'])
+" call denite#custom#source('file', 'matchers',
+"       \ ['converter/abbr_word', 'matcher/fruzzy'])
+
+let g:fruzzy#usenative = 1
+
+call denite#custom#source(
+  \ 'file/rec', 'matchers', ['converter/abbr_word','matcher/fruzzy'])
+
 
 " nnoremap <silent><leader>do :<C-u>Denite file/old -default-action=switch <CR>
 " nnoremap <silent><leader>df :Denite file/rec <cr>
@@ -291,16 +246,7 @@ nnoremap <silent><leader>do :<C-u>Denite file/old -default-action=switch <CR>
 nnoremap <silent><leader>df :Denite file/rec <cr>
 nnoremap <silent><leader>dg :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
 nnoremap <silent><leader>dp :<c-u>DeniteProjectDir file/rec <cr>
-nnoremap <silent><leader><leader> :<c-u>DeniteProjectDir file/rec <cr>
-
-" nnoremap <silent><localleader>o :<C-u>Denite file/old -default-action=switch <CR>
-" nnoremap <silent><localleader>f :Denite file/rec <cr>
-" nnoremap <silent><localleader>g :<C-u>DeniteProjectDir grep -buffer-name=search -no-empty <CR>
-" nnoremap <silent><localleader>p :<c-u>DeniteProjectDir file/rec <cr>
-
-
-
-
+nnoremap <silent><space><space> :<c-u>DeniteProjectDir file/rec <cr>
 
 " KEY MAPPINGS
 autocmd FileType denite call s:denite_settings()
@@ -337,6 +283,44 @@ function! s:denite_filter_settings() abort
 endfunction
 
 
-let g:python_host_prog='/usr/bin/python2'
-let g:python3_host_prog='/usr/bin/python3'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
 
+
+let g:user_emmet_install_global = 0
+" let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='<C-E>'
+autocmd FileType html,css,javascript EmmetInstall
+let g:user_emmet_mode='iv'  "enable all functions, which is equal to
+imap <C-e><C-e> <plug>(emmet-expand-abbr)
+
+
+" Remap keys for gotos
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>[c <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>]c <Plug>(coc-diagnostic-next)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+vmap <leader>af  <Plug>(coc-format-selected)
+nmap <leader>af  <Plug>(coc-format-selected)
+nmap <leader>rn  <Plug>(coc-rename)
+
+
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction

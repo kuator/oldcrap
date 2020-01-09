@@ -120,7 +120,7 @@ alias djsh="python manage.py shell"
 alias djm="python manage.py migrate"
 alias djmm="python manage.py makemigrations"
 alias djmmm="python manage.py makemigrations;python manage.py migrate"
-alias createuser="python manage.py createsuperuser"
+# alias createuser="python manage.py createsuperuser"
 alias c="clear"
 alias zish="source ~/.zshrc"
 alias sourcezsh="source ~/.zshrc"
@@ -345,26 +345,12 @@ setopt extended_glob
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$PATH:/home/evakuator/.gem/ruby/2.5.0/bin"
-
-export PATH="$PATH:/mnt/myhdd/steamapps/common/Proton 4.2/dist/bin"
-
-# export GAME_ID="683320"  # GRIS
-# export STEAM_ROOT=/mnt/myhdd/
-# export PROTON_ROOT=$STEAM_ROOT/steamapps/common/Proton\ 4.2/dist
-# export HOST_LIBS=$HOME/.steam/ubuntu12_32/steam-runtime/amd64
-# export WINEPREFIX=$PROTON_ROOT/share/default_pfx/
-# export LD_LIBRARY_PATH="$PROTON_ROOT/lib64/"
-
-# export LD_LIBRARY_PATH="$PROTON_ROOT/lib64\
-# :$HOST_LIBS/lib/x86_64-linux-gnu\
-# :$HOST_LIBS/usr/lib/x86_64-linux-gnu\
-# "
-
-
-# WINEPREFIX="$STEAM_ROOT/steamapps/compatdata/$GAME_ID/pfx"
-
 stty -ixon
+
+
+# Export the Android SDK path 
+export ANDROID_HOME=$HOME/android-sdk/
+export PATH=$PATH:$ANDROID_HOME/emulator 
+export PATH=$PATH:$ANDROID_HOME/tools 
+export PATH=$PATH:$ANDROID_HOME/tools/bin 
+export PATH=$PATH:$ANDROID_HOME/platform-tools

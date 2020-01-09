@@ -7,5 +7,10 @@
         "key": "ctrl+j",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
+    },
+    {
+        "key": "Escape",
+        "command": "vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.mode != normal"
     }
 ]

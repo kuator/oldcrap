@@ -7,6 +7,7 @@
 
 [difftool]
     trustExitCode = true
+	prompt = false
 # the option is mergetool.<tool>.trustExitCode
 # replace nvimdiff4 with the name of the mergetool you use
 
@@ -22,3 +23,7 @@
     cmd = nvim -f -c "Gdiff" "$MERGED"
 [color]
 	ui = auto
+[diff]
+	tool = vimdiff
+[alias]
+	d = difftool

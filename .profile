@@ -47,14 +47,6 @@ fi
 
 
 
-#////////Temp comment
-
-
-
-xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
-
-
-#/////////Temp comment
 
 
 
@@ -71,6 +63,11 @@ xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
 # setxkbmap -layout us,ru
 
 # xkbset ignorelock -control sticky -twokey -latchlock
+
+
+#////////Temp comment
+xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
+#/////////Temp comment
 
 xcape -t 1000 -e "Hyper_R=space"
 

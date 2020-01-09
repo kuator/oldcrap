@@ -1,15 +1,38 @@
 {
   "suggest.noselect": false,
-  "python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages",
   "python.jediEnabled": true,
+  "python.jediPath": "/home/evakuator/.local/lib/python3.6/site-packages",
   "python.venvPath": "/home/evakuator/Documents/.virtualenvs",
   "solargraph.logLevel": "debug",
   "emmet.includeLanguages": {
   },
+  "diagnostic.enable": true,
   "solargraph.diagnostics": true,
   "javascript.suggest.autoImports": true,
   "diagnostic.messageTarget": "echo",
   "snippets.extends": {  "ruby": ["rails"]  },
   "omnisharp.useDotnet": false,
-  "python.autoComplete.addBrackets": true
+  "languageserver": {
+       "ccls": {
+           "command": "ccls",
+           "filetypes": [
+               "c",
+               "cpp",
+               "objc",
+               "objcpp"
+           ],
+           "rootPatterns": [
+               ".ccls",
+               "compile_commands.json",
+               ".vim/",
+               ".git/",
+               ".hg/"
+           ],
+           "initializationOptions": {
+               "cache": {
+                   "directory": "/tmp/ccls"
+               }
+           }
+       }
+   }
 }

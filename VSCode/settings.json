@@ -1,8 +1,6 @@
 {
 "keyboard.dispatch": "keyCode",
 "ruby.intellisense": "rubyLocate",
-"vim.useSystemClipboard": true,
-"vim.insertModeKeyBindings": [ { "before": ["k", "j"], "after": ["<esc>"] }],
 "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
 "workbench.iconTheme": "material-icon-theme",
 "background.enabled": true,
@@ -20,11 +18,13 @@
     "background-size":"cover",
     "opacity": 0.2
 },
-"editor.lineNumbers": "on",
+"editor.lineNumbers": "relative",
 "emmet.includeLanguages": {
 },
 "files.autoSave": "off",
 "editor.codeLens": false,
 "window.zoomLevel": -1,
-"workbench.colorTheme": "Dracula"
+"workbench.colorTheme": "Dracula",
+"editor.multiCursorModifier": "alt",
+"vscode-neovim.neovimPath": "/usr/bin/nvim"
 }

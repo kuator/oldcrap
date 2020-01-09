@@ -24,35 +24,27 @@ Plug 'junegunn/fzf'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'amadeus/vim-convert-color-to'
+Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
-Plug 'othree/html5.vim'
-Plug 'tek/vim-textobj-ruby'
 Plug 'kana/vim-textobj-user'
-Plug 'jasonlong/vim-textobj-css'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
-Plug 'honza/vim-snippets'
-Plug 'iandingx/leetcode.vim'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'wellle/targets.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'wellle/targets.vim'
 Plug 'SirVer/ultisnips'
 Plug 'w0rp/ale'
-
+Plug 'liuchengxu/vim-clap'
+Plug 'desmap/slick'
 
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/deoplete.nvim'
-  Plug 'Shougo/denite.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -104,8 +96,9 @@ filetype plugin indent on
 set termguicolors
 set hlsearch
 colorscheme gruvbox
-" colorscheme OceanicNext
-set background=dark
+set bg=dark
+
+
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! LineNr guifg=white guibg=NONE
@@ -115,56 +108,38 @@ hi! CursorLineNr ctermbg=NONE guibg=NONE
 hi! Pmenusel guifg=white guibg=#504945
 hi! Comment guifg=#ABaaaa
 
+
+
 let mapleader=" "
-set updatetime=100
 inoreabbr lam =>
 inoreabbr far =>
 inoreabbr tar ->
 set ttimeoutlen=50
 tnoremap <esc> <C-\><C-n>
-nnoremap <c-l> <c-l>:nohl<cr>
+nnoremap <silent><c-l> <c-l>:nohl<cr>
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set signcolumn=yes
-" if hidden is not set, TextEdit might fail.
 set hidden
-" Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
-" Better display for messages
 set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
-" don't give |ins-completion-menu| messages.
 set shortmess+=c
-" always show signcolumns
 set signcolumn=yes
-
-" Show file options above the command line
 set wildmenu
-" Don't offer to open certain files/directories
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
+" set scrolloff=5       " Start scrolling n lines before horizontal
+" set sidescrolloff=7   " Start scrolling n chars before end of screen.
+set wildcharm=<C-z>
+set hidden
 
-set scrolloff=5       " Start scrolling n lines before horizontal
-" border of window.
-set sidescrolloff=7   " Start scrolling n chars before end of screen.
-
-" set foldmethod=syntax " syntax highlighting items specify folds
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key=','
 autocmd FileType html,css EmmetInstall
-set wildcharm=<C-z>
-" nnoremap ,e :e **/*<C-z><S-Tab>
-" nnoremap ,f :find **/*<C-z><S-Tab>
 
-set hidden
 
 let g:LanguageClient_serverCommands = {
       \ 'javascript': ['typescript-language-server', '--stdio'],
@@ -173,44 +148,26 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
       \ 'python': ['pyls'],
       \ 'ruby': ['solargraph', 'stdio'],
+      \ 'cpp': ['ccls', '--log-file=/tmp/cq.log'],
       \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <leader>mn :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>rn :call LanguageClient#textDocument_rename()<CR>
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-
-let g:ale_linters = {
-      \   'javascript': ['eslint'],
-      \ }
-
-call deoplete#custom#source('_', 'sorters', ['sorter_word'])
-call deoplete#custom#source('ultisnips', 'rank', 9999)
-
-function! s:is_ultisnips_expandable()
-
-  " get word before cursor
-  let word = matchstr(getline('.'), printf('\v\w*%%%dc\w', col('.') - 1))
-  if(empty(word))
-    return 0
-  endif
-
-  " test word against triggers
-  return !empty(filter(UltiSnips#SnippetsInCurrentScope(), {k,v -> k ==# word}))
-
-endfunction
-
-inoremap <expr> <c-y>
-            \ pumvisible() ? 
-            \ <sid>is_ultisnips_expandable() ?
-            \ "<C-R>=UltiSnips#ExpandSnippet()<cr>" :
-            \"<c-y>" : "<c-y>"
-
 set pyxversion=3
 
-let g:ale_linters = {
-\   'python': ['pylint'],
-\}
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+
+nnoremap <silent> <leader><leader> :Clap files<cr>
+set laststatus=2
+
+" Targets.vim
+let g:targets_nl = 'nN'
+
+let g:clap_disable_run_rooter = 1
