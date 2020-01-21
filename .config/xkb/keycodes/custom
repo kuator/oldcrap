@@ -1,0 +1,5 @@
+xkb_keycodes "my" {
+          include "evdev+aliases(qwerty)"
+          <HYPR> =  65;
+          <SPCE> = 207;
+        };

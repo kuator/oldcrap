@@ -1,0 +1,8 @@
+//In order to make shift toggle, you need to add code below in /usr/share/X11/xkb/compat/basic as sudo
+interpret ISO_Level2_Latch+AnyOf(all) {
+    useModMapMods=level1;
+    action= LatchMods(modifiers=Shift,clearLocks,latchToLock);
+};
+interpret ISO_Level2_Latch+AnyOfOrNone(all) {
+    action= LatchMods(modifiers=Shift,clearLocks,latchToLock);
+};
